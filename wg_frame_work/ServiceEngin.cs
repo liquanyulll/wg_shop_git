@@ -35,5 +35,13 @@ namespace wg_frame_work
                 return context;
             }
         }
+
+        public static string IP
+        {
+            get
+            {
+                return Current.Connection.RemoteIpAddress.ToString();
+            }
+        }
     }
 }

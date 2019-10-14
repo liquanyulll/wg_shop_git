@@ -65,6 +65,7 @@ namespace web_api
             services.AddTransient<AccountService>();
             services.AddTransient<ProductService>();
             services.AddTransient<ProductTypeService>();
+            services.AddTransient<MoneyKeyService>();
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             #endregion
 
@@ -72,6 +73,7 @@ namespace web_api
             services.AddMvc(options =>
             {
                 options.Filters.Add(new UserFilterAttribute(new AuthenticationSupport()));
+                options.Filters.Add(typeof(GlobalExceptions));
             });
         }
 

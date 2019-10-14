@@ -28,6 +28,13 @@ namespace wg_frame_work
             }
         }
 
+        public void ReloadUserAmountCache(decimal amount)
+        {
+            var user = CurrentUser;
+            user.Amount = amount;
+            RedisCachedHelper.Set(APIToken, user);
+        }
+
         public string SignIn(UserModel user)
         {
             var token = Guid.NewGuid().ToString();
