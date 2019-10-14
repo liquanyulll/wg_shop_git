@@ -21,7 +21,7 @@ namespace web_api.Controllers
         public JsonResult GetVerifCode(int codeLength = 4)
         {
             var codeDesResult = EncyryptionUtil.DESEncrypt(SystemUtil.GetRandomVGCharac(codeLength));
-            var result = new { codeDes = codeDesResult, imgUrl = WebConfig.SystemWebDomain+"/api/home/GetVerfyPic?code=" + codeDesResult };
+            var result = new { codeDes = codeDesResult, imgUrl = WebConfig.SystemWebDomain+"api/home/GetVerfyPic?code=" + codeDesResult };
             return SucessResult(result);
         }
 
