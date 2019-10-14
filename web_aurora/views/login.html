@@ -1,0 +1,41 @@
+﻿<link href="css/form-elements.css" rel="stylesheet" />
+<link href="css/style.css" rel="stylesheet" />
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2 text">
+            <h1><strong>TravelInfo</strong></h1>
+            <!--<div class="description">
+                <p>
+                    This is a free responsive login form made with Bootstrap.
+                    Download it on <a href="#"><strong>AZMIND</strong></a>, customize and use it as you like!
+                </p>
+            </div>-->
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3 form-box">
+            <div class="form-top">
+                <div class="form-top-left">
+                    <h3>网站登陆</h3>
+                    <p>输入您的用户名和密码登录:</p>
+                </div>
+                <div class="form-top-right">
+                    <i class="fa fa-key"></i>
+                </div>
+            </div>
+            <div class="form-bottom">
+                <form novalidate ng-submit="Save()" name="loginForm" class="login-form">
+                    <div class="form-group" ng-class="{'has-error':loginForm.UserName.$invalid&&isSubmit}">
+                        <label class="sr-only" for="form-username">Username</label>
+                        <input type="text" name="UserName" placeholder="Username..." ng-model="UserName" required class="form-username form-control">
+                    </div>
+                    <div class="form-group" ng-class="{'has-error':loginForm.UserName.$invalid&&isSubmit}">
+                        <label class="sr-only" for="form-password">Password</label>
+                        <input type="password" name="Password" placeholder="Password..." ng-model="Password" required class="form-password form-control">
+                    </div>
+                    <button type="submit" class="btn">Sign in!</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

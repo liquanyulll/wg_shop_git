@@ -1,0 +1,89 @@
+﻿.mytop {
+    height: 42px;
+    line-height: 42px;
+    /*position: relative;*/
+    border-bottom: 1px solid #e2e2e2;
+}
+
+.mynavbar {
+    position: inherit;
+}
+
+    .mynavbar .navbar-nav > li > a {
+        color: #faf0f0 !important;
+    }
+
+    .mynavbar .nav .open > a, .mynavbar .nav .open > a:hover, .mynavbar .nav .open > a:focus {
+        background-color: #3a7bca;
+    }
+
+.navbar-nav > li > a:hover {
+    color: #ffff00 !important;
+}
+
+.navbar-brand {
+    color: #faf0f0 !important;
+}
+
+
+.account-btn button {
+    color: #fff;
+    background-color: #03b8cf;
+    border-color: #03a2b6;
+    /*text-decoration: none;
+    display: inline-block;
+    color: #fff;
+    width: 157px;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 0;
+    height: 24px;
+    line-height: 24px;
+    background-color: #17A1FF;
+    background: linear-gradient(218deg, #28cbff 0%, #40b6ff 100%);
+    border-radius: 12px;
+    letter-spacing: 0.4px;
+    max-width: 100px;*/
+}
+
+
+.product-div {
+    transition: all 0.4s;
+    border-radius: 3%;
+    padding: 10px;
+    margin: 10px;
+    cursor: pointer;
+    position: relative;
+    width: 260px;
+}
+
+.product-div:hover {
+        cursor: pointer;
+        transform: translate(0,-3px);
+}
+
+ .product-div img {
+        width: 250px;
+        height: 250px;
+    }
+
+.product-div price {
+        color: #fff !important;
+        display: inline-block;
+        float: right;
+        padding: 0 2px;
+        margin-top: 6px;
+        font-size: 16px;
+    }
+.product-div .kucun {
+        background-color: green;
+        color: #fff !important;
+        display: inline-block;
+        border-radius: 3px;
+        float: right;
+        padding: 0 2px;
+        font-size: 16px;
+}
+  
+
+
