@@ -17,6 +17,9 @@ namespace web_api.AutoMappers
 
             CreateMap<t2_product_type, ProductTypeModel>();
             CreateMap<ProductTypeModel, t2_product_type>();
+
+            CreateMap<ProductListModel, t2_product>();
+            CreateMap<t2_product, ProductListModel>();
         }
     }
 }

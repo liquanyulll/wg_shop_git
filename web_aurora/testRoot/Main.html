@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="https://cdn.bootcss.com/angular.js/1.7.2/angular.min.js"></script>
+    <script src="https://cdn.bootcss.com/angular-ui-router/1.0.22/angular-ui-router.min.js"></script>
+</head>
+<body data-ng-app="myApp">
+    <h1>AngularJS Home Page (Ui-router Demonstration)</h1>
+    <div data-ui-view=""></div>
+
+    <script>
+        var myApp = angular.module("myApp", ["ui.router"]);
+
+        myApp.config(function ($stateProvider, $urlRouterProvider) {
+            //这是因为Angular 1.6 版本更新后 对路由做的处理，这样才可以和以前版本一样正常使用
+            //$locationProvider.hashPrefix('');
+            //$urlRouterProvider.when("", "/PageTab");
+            $urlRouterProvider.when("", "/PageTab/Page1");
+
+            $stateProvider
+                .state("PageTab", {
+                    url: "/PageTab",
+                    templateUrl: "PageTab.html"
+                })
+                .state("PageTab.Page1", {
+                    params: { ddf: null, product_id: null, accp: null },
+                    //url: '/{contactId:[0-9]{1,4}}',
+                    //url: "/Page1/:product_id/:accp",
+                    url: "/Page1/:product_id/:accp",
+                    templateUrl: "Page1.html",
+                    controller: "page1"
+                })
+                .state("PageTab.Page2", {
+                    url: "/Page2",
+                    templateUrl: "Page2.html"
+                })
+                .state("PageTab.Page3", {
+                    url: "/Page3",
+                    templateUrl: "Page3.html"
+                });
+                //.state("PageTab.Page3.Page4", {
+                //    url: "/Page4",
+                //    templateUrl: "Page4.html"
+                //});
+
+
+            //var page3 = {
+            //    name: 'people.person',
+            //    url: '/{personId}',
+            //    component: 'person',
+            //    resolve: {
+            //        person: function (people, $stateParams) {
+            //            return people.find(function (person) {
+            //                return person.id === $stateParams.personId;
+            //            });
+            //        }
+            //    }
+            //}
+            //$stateProvider.state(page3);
+        });
+
+        myApp.controller('PageTab', function ($scope, $rootScope, $stateParams, $state) {
+            console.log($state);
+            $scope.goP1 = function () {
+                $rootScope.ccd = 123;
+                //$state.go("PageTab.Page2");
+                //$state.go("PageTab");
+                $state.go("PageTab.Page1", { ddf: 123123, accp: 123 });
+            };
+
+        });
+        myApp.controller('page1', function ($scope, $state, $stateParams, $rootScope) {
+            console.log($scope);
+            console.log($rootScope);    // 这里将接受到传入的参数对象
+            console.log($stateParams);    // 这里将接受到传入的参数对象
+        });
+    </script>
+</body>
+</html>

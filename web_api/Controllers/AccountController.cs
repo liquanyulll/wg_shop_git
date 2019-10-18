@@ -30,6 +30,7 @@ namespace web_api.Controllers
         }
 
         [HttpGet("CurrentUser")]
+        [SkipUserFilter]
         public async Task<JsonResult> GetCurrentUser()
         {
             var user = _authenticationSupport.CurrentUser;

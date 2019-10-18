@@ -28,6 +28,7 @@
     //加载商品类型
     $http.get(GetUrl('api/ProductType/ProductTypes')).then(function (res) {
         $scope.ProductTypes = res.data;
+        console.log($scope.ProductTypes);
     }).catch(function (resp) {
         console.log(resp);
     });

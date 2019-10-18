@@ -19,7 +19,7 @@ namespace wg_core
             this.PageSize = pageSize;
             this.PageIndex = pageIndex;
 
-            this.AddRange(source.Skip(pageIndex * pageSize).Take(pageSize).ToList());
+            this.AddRange(source.Skip((pageIndex-1) * pageSize).Take(pageSize).ToList());
         }
 
         public PagedList(IList<T> source, int pageIndex, int pageSize)

@@ -1,56 +1,25 @@
 ﻿<!-- Marketing Icons Section -->
 <div class="row" style="flex-flow: row wrap;display: flex">
-    <div class=" product-div">
-        <div class="thumbnail">
+    <div class=" product-div" ng-repeat="x in InfoList">
+        <div class="thumbnail" ng-click="GoProduct(x)">
             <!--<img src="..." alt="...">-->
-            <img src="../imgs/))N@QKVD9$A)$}0}BVBB_KA.png" class="img-rounded" />
-            <div class="caption">
-                <p><a>12321321fa啊打发打发打发撒旦发射点发生sfasfdasf啊打发打发打发撒旦发射点发生</a></p>
+            <img src="{{x.logImg}}" class="img-rounded" />
+            <div class="caption" >
+                <p><a ng-bind="x.productDesc"></a></p>
                 <p>
                     <strong style="color:red;">
-                        <span>￥<span>22</span> 或 </span>
-                        <span><span>20</span>.Clicks</span>
+                        <span ng-show="x.price>0">￥<span ng-bind="x.price"></span> 或 </span>
+                        <span ng-show="x.invs>0"><span ng-bind="x.invs"></span>.Clicks</span>
                     </strong>
                     <!--<div class="row">
-        <div class="col-md-6">
+                        <div class="col-md-6">
 
-        </div>
-        <div class="col-md-6">
-        </div>
-    </div>-->
-                    <span class="kucun">库存:99</span>
+                        </div>
+                        <div class="col-md-6">
+                        </div>
+                    </div>-->
+                    <span class="kucun">库存:<span ng-bind="x.stock"></span></span>
                 </p>
-            </div>
-        </div>
-    </div>
-    <div class=" product-div">
-        <div class="thumbnail">
-            <!--<img src="..." alt="...">-->
-            <img src="../imgs/ccc.png" class="img-rounded" />
-            <div class="caption">
-                <h3>Thumbnail label</h3>
-                <p>...</p>
-                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-            </div>
-        </div>
-    </div>
-    <div class=" product-div">
-        <div class="thumbnail">
-            <img src="../imgs/qrcode.png" class="img-rounded" />
-            <div class="caption">
-                <p>Thumbnail label</p>
-                <p>...</p>
-                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-            </div>
-        </div>
-    </div>
-    <div class=" product-div">
-        <div class="thumbnail">
-            <img src="../imgs/qrcode.png" class="img-rounded" />
-            <div class="caption">
-                <h3>Thumbnail label</h3>
-                <p>...</p>
-                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
             </div>
         </div>
     </div>
