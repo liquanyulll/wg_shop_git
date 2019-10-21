@@ -1,4 +1,4 @@
-﻿var app = angular.module("myApp", ["ngRoute", "ngStorage", "ui.bootstrap", "tm.pagination", "directives", "services"]);
+﻿var app = angular.module("myApp", ["ui.router", "ngStorage", "ui.bootstrap", "tm.pagination", "directives", "services"]);
 
 
 

@@ -1,0 +1,38 @@
+﻿<div class="row mytop" style="background: #f3f9ff">
+    <div style="margin:0px 15% 0px 15%">
+        <div class="col-sm-5" style="text-align:left;">
+            <img src="imgs/gonggao.png" style="width: 20px;height: 20px;" />最新公告：
+            <span style="color:red;">如何出货快？ 你完全清楚么？</span>
+        </div>
+        <div class="col-sm-7 account-btn" style="text-align:right;">
+            <!--<span style="padding-right: 20px;">
+                <img src="imgs/vip.png" /><span style="color:red;">会员购买  </span>
+                <span style="color:red;">充值</span>
+            </span>-->
+            <strong ng-show="user.userId"><span href="javascript:;">用户名：{{user.userName}}</span> · <span style="color:red;cursor: pointer;" ng-click="GoUserCenter()">会员中心</span> · <span style="cursor: pointer;" ng-click="SignOut()">退出会员</span> </strong>
+            <a class="btn btn-info" ng-show="!user.userId" href="login.html">登陆</a> &nbsp;&nbsp;
+            <a class="btn btn-info" ng-show="!user.userId" href="regiest.html">注册</a>
+        </div>
+    </div>
+</div>
+<div class="row" style="background:#fff ;height: 13px;"> </div>
+<div class="row" style="background: #fff;">
+    <div style="margin:0px 15% 0px 15%">
+        <div class="col-sm-3" style="text-align:left;">
+            <h2><strong>asadfasdfa</strong></h2>
+        </div>
+        <div class="col-sm-4 " style="text-align:right;">
+            <div class="input-group" style="margin-top: 20px;width: 300px;">
+                <input type="text" class="form-control" placeholder="请输入商品名">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" style="background-color: #3280fc;color: white;">搜索</button>
+                </span>
+            </div>
+        </div>
+        <div class="col-sm-5 account-btn" style="text-align:right;">
+            <img src="imgs/kefuzhongxin.png" style="width: 200px; margin-left: 50px;" />
+            <!--<img src="imgs/qrcode.png" />-->
+        </div>
+    </div>
+</div>
+<div class="row" style="background:#fff ;height: 8px;"></div>

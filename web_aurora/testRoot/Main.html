@@ -37,12 +37,13 @@
                 })
                 .state("PageTab.Page3", {
                     url: "/Page3",
-                    templateUrl: "Page3.html"
+                    templateUrl: "Page3.html",
+                    controller: "page3"
+                })
+                .state("PageTab.Page3.Page4", {
+                    url: "/Page4",
+                    templateUrl: "Page4.html"
                 });
-                //.state("PageTab.Page3.Page4", {
-                //    url: "/Page4",
-                //    templateUrl: "Page4.html"
-                //});
 
 
             //var page3 = {
@@ -74,6 +75,14 @@
             console.log($scope);
             console.log($rootScope);    // 这里将接受到传入的参数对象
             console.log($stateParams);    // 这里将接受到传入的参数对象
+        });
+        myApp.controller('page3', function ($scope, $state, $stateParams, $rootScope) {
+            //console.log($scope);
+            //console.log($rootScope);    // 这里将接受到传入的参数对象
+            //console.log($stateParams);    // 这里将接受到传入的参数对象
+            $scope.goPage4 = function () {
+                $state.go("PageTab.Page2.Page4");
+            }
         });
     </script>
 </body>
