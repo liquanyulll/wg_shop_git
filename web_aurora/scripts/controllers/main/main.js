@@ -1,4 +1,4 @@
-﻿app.controller('mainCtrl', function ($scope, $http, $window, $location) {
+﻿app.controller('headCtrl', function ($scope, $http, $window, $state) {
     $scope.user = {};
 
     //加载商品类型
@@ -14,10 +14,12 @@
     };
 
     $scope.GoUserCenter = function () {
-        $location.path("/my");
+        $state.go("index.my");
     };
 
-   
+    $scope.headSearch = function () {
+        $scope.$emit("headSearch", $scope.headSearchName);
+    }
 });
 
 app.controller('navbarCtrl', function ($scope, $http, $window, $location) {

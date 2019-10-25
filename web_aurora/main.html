@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Api Info</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/modern-business.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="css/tmPagination.css" rel="stylesheet" />
+    <link href="css/main.css" rel="stylesheet" />
+    <link href="css/top.css" rel="stylesheet" />
+    <style>
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+            display: none !important;
+        }
+    </style>
+</head>
+<body ng-app="myApp" ng-controller="fatherCtrl">
+    <div ui-view></div>
+    <div ng-include="'views/template/loading.html'"></div>
+    <!-- /.container -->
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular-route.min.js"></script>-->
+    <script src="https://cdn.bootcss.com/angular-ui-router/1.0.22/angular-ui-router.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcss.com/angular-ui-bootstrap/0.12.1/ui-bootstrap-tpls.min.js"></script>
+    <script src="https://cdn.bootcss.com/ngStorage/0.2.0/ngStorage.min.js"></script>
+
+    <script src="scripts/environment/jqueryextends.js"></script>
+    <script src="scripts/environment/common.js"></script>
+    <script src="scripts/plugin/tm.pagination.js"></script>
+    <script src="scripts/environment/directives.js"></script>
+    <script src="scripts/environment/services.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/interceptor.js"></script>
+    <script src="scripts/route.js"></script>
+    <script src="scripts/controllers/main/main.js"></script>
+    <script src="scripts/controllers/ProductListCtrl.js"></script>
+    <script src="scripts/controllers/ProductCtrl.js"></script>
+    <script src="scripts/controllers/MyCtrl.js"></script>
+
+    <!--<script src="scripts/controllers/UnProcessCtrl.js"></script>
+    <script src="scripts/controllers/WebSiteCtrl.js"></script>
+    <script src="scripts/controllers/PreProcessCtrl.js"></script>
+    <script src="scripts/controllers/PublishInfoCtrl.js"></script>
+    <script src="scripts/controllers/LoginCtrl.js"></script>-->
+</body>
+</html>

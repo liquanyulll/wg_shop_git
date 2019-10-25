@@ -21,14 +21,21 @@ namespace web_api.Controllers
         private readonly IMapper _mapper;
         private readonly AccountService _accountService;
         private readonly AuthenticationSupport _authenticationSupport;
+        private readonly InvitationService _invitationService;
 
-        public AccountController(IMapper mapper, AccountService accountService, AuthenticationSupport authenticationSupport)
+
+        public AccountController(IMapper mapper,
+            AccountService accountService,
+            AuthenticationSupport authenticationSupport,
+            InvitationService invitationService)
         {
             _mapper = mapper;
             _accountService = accountService;
             _authenticationSupport = authenticationSupport;
+            _invitationService = invitationService;
         }
 
+        #region 用户 
         [HttpGet("CurrentUser")]
         [SkipUserFilter]
         public async Task<JsonResult> GetCurrentUser()
@@ -99,5 +106,34 @@ namespace web_api.Controllers
             var isExit = await _accountService.IsExistUserName(userName);
             return SucessResult(isExit ? "Y" : "N");
         }
+        #endregion
+
+        #region 分享邀请产品
+        [HttpPost("CreateInvProduct")]
+        public async Task<JsonResult> CreateInvProduct(int pid)
+        {
+            var user = _authenticationSupport.CurrentUser;
+            var invInfo = await _invitationService.Create(user.UserId, pid);
+            var model = _mapper.Map<InvitationModel>(invInfo);
+
+            return SucessResult(model);
+        }
+
+        [SkipUserFilter]
+        [HttpPost("GetInvInfo")]
+        public async Task<JsonResult> GetInvInfo(int pid)
+        {
+            var user = _authenticationSupport.CurrentUser;
+            if (user == null)
+                return SucessResult(null);
+
+            var invInfo = await _invitationService.GetInvInfo(user.UserId, pid);
+            if (invInfo == null)
+                return SucessResult(null);
+
+            var model = _mapper.Map<InvitationModel>(invInfo);
+            return SucessResult(model);
+        }
+        #endregion
     }
 }

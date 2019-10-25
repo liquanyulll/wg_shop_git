@@ -18,18 +18,18 @@
 <div class="row" style="background:#fff ;height: 13px;"> </div>
 <div class="row" style="background: #fff;">
     <div style="margin:0px 15% 0px 15%">
-        <div class="col-sm-3" style="text-align:left;">
+        <div class="col-sm-4" style="text-align:left;">
             <h2><strong>asadfasdfa</strong></h2>
         </div>
         <div class="col-sm-4 " style="text-align:right;">
             <div class="input-group" style="margin-top: 20px;width: 300px;">
-                <input type="text" class="form-control" placeholder="请输入商品名">
+                <input type="text" class="form-control" ng-model="headSearchName" placeholder="请输入商品名">
                 <span class="input-group-btn">
-                    <button class="btn btn-default" type="button" style="background-color: #3280fc;color: white;">搜索</button>
+                    <button class="btn btn-default" type="button" ng-click="headSearch()" style="background-color: #3280fc;color: white;z-index: 999;">搜索</button>
                 </span>
             </div>
         </div>
-        <div class="col-sm-5 account-btn" style="text-align:right;">
+        <div class="col-sm-4 account-btn" style="text-align:right;">
             <img src="imgs/kefuzhongxin.png" style="width: 200px; margin-left: 50px;" />
             <!--<img src="imgs/qrcode.png" />-->
         </div>

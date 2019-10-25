@@ -115,13 +115,19 @@
         app.config(['$routeProvider', "$locationProvider", "$httpProvider", function ($routeProvider, $locationProvider, $httpProvider) {
             //这是因为Angular 1.6 版本更新后 对路由做的处理，这样才可以和以前版本一样正常使用
             $locationProvider.hashPrefix('');
+            $locationProvider.html5Mode({
+                enabled: true,
+                requireBase: false
+            });
             //注册拦截器
             $httpProvider.interceptors.push("httpInterceptor");
         }]);
         app.controller('loginCtrl', function ($scope, $http, $window, $location, $rootScope, ModalService, HttpCatchService, AccountService) {
+
+            var returnUrl = decodeURIComponent($location.search().returnUrl);
              var token = $window.localStorage.ApiToken;
             if (token) {
-                window.location = "index.html";
+                window.location = "main.html";
             }
 
             $scope.loginInfo = {};
@@ -156,7 +162,11 @@
                     $window.localStorage.ApiToken = resp.data;
                     //$rootScope.CurrentPage = "";
                     setTimeout(function () {
-                        window.location = "index.html";
+                        if (returnUrl) {
+                            window.location = returnUrl;
+                        } else {
+                            window.location = "main.html";
+                        }
                     }, 1200);
                 }).catch(function (resp) {
                     console.log(resp);

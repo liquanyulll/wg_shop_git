@@ -4,7 +4,8 @@
     //注册拦截器
     $httpProvider.interceptors.push("httpInterceptor");
 
-    $urlRouterProvider.when("", "/index");
+    $urlRouterProvider.when("", "/index/productList/");
+    $urlRouterProvider.otherwise('/index/productList/');
     $stateProvider
         .state("index", {
             url: "/index",
@@ -19,6 +20,39 @@
                 'navbar@index': {
                     templateUrl: 'views/main/navbar.html',
                     controller: "navbarCtrl"
+                },
+                'body@index': {
+                    templateUrl: 'views/main/home.html',
+                },
+                'footer@index': {
+                    templateUrl: 'views/main/footer.html',
+                }
+            }
+        }).state("index.productList", {
+            params: { tpid: null },
+            url: "/productList/:tpid",
+            views: {
+                'body@index': {
+                    templateUrl: 'views/product-list.html',
+                    controller: "ProductListCtrl"
+                }
+            }
+        }).state("index.productList.product", {
+            params: { invcode: null },
+            url: "/product/:id/:invcode",
+            views: {
+                'body@index': {
+                    templateUrl: 'views/product.html',
+                    controller: "ProductCtrl"
+                }
+            }
+        })
+        .state("index.my", {
+            url: "/my",
+            views: {
+                'body@index': {
+                    templateUrl: 'views/my.html',
+                    controller: "MyCtrl"
                 }
             }
         });

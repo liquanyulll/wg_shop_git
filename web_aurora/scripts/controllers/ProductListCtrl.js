@@ -1,6 +1,6 @@
-﻿app.controller('ProductListCtrl', function ($scope, $http, $rootScope, $location) {
+﻿app.controller('ProductListCtrl', function ($scope, $http, $rootScope, $stateParams, $state) {
 
-    //$rootScope.www = "7777777";
+    console.log($stateParams);
 
     var init = function () {
         $scope.InfoList = [];
@@ -15,8 +15,10 @@
     init();
 
     $scope.Search = function () {
+        $scope.icc1++;
         $scope.queryVar.PageIndex = $scope.paginationConf.currentPage;
         $scope.queryVar.PageSize = $scope.paginationConf.itemsPerPage;
+        $scope.queryVar.TypeId = $stateParams.tpid;
 
         $http.post(GetUrl('api/Product/Search'), $scope.queryVar).then(function (resp) {
             var qRtn = resp.data;
@@ -32,15 +34,20 @@
     };
     $scope.Search();
 
+    $scope.$on("goHeadSearch", function (event, data) {
+        $scope.queryVar.PName = data;
+        $scope.Search();
+    });
+
     $scope.GoProduct = function (x) {
         $rootScope.SelectedProduct = x;
-        $location.path('/product/' + x.productId);
+        $state.go("index.productList.product", { id: x.productId });
     }
 
-    $http.get(GetUrl('api/Account/CurrentUser')).then(function (res) {
-        $scope.user = res.data;
-    }).catch(function (resp) {
-        console.log(resp);
-    });
+    //$http.get(GetUrl('api/Account/CurrentUser')).then(function (res) {
+    //    $scope.user = res.data;
+    //}).catch(function (resp) {
+    //    console.log(resp);
+    //});
 
 });

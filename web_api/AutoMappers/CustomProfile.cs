@@ -20,6 +20,12 @@ namespace web_api.AutoMappers
 
             CreateMap<ProductListModel, t2_product>();
             CreateMap<t2_product, ProductListModel>();
+
+            CreateMap<ProductModel, t2_product>();
+            CreateMap<t2_product, ProductModel>();
+
+            CreateMap<InvitationModel, t3_user_product_invitation>();
+            CreateMap<t3_user_product_invitation, InvitationModel>();
         }
     }
 }

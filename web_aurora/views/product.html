@@ -1,4 +1,4 @@
-﻿<div class="row">
+﻿<div class="row ng-cloak">
     <div class="panel panel-default" style="padding:10px;">
         <div class="row">
             <!-- 商品 -->
@@ -42,23 +42,40 @@
             <!-- 购买 -->
             <div class=" col-md-12">
                 <ul class="nav nav-tabs">
-                    <li class="active">
-                        <a data-target="#product-Sup1" data-toggle="tab" aria-expanded="true">支付方式</a>
+                    <li ng-class="{'active':product.isBuy}" ng-if="product.isBuy">
+                        <a data-target="#product-Sup1" data-toggle="tab" aria-expanded="true">已购资源</a>
+                    </li>
+                    <li ng-class="{'active':!product.isBuy}">
+                        <a data-target="#product-Sup2" data-toggle="tab" aria-expanded="true">支付方式</a>
                     </li>
                 </ul>
                 <div class="tab-content">
-                    <div class="tab-pane fade active in" id="product-Sup1">
+                    <div class="tab-pane fade" ng-class="{'active in':product.isBuy}" id="product-Sup1" ng-if="product.isBuy">
                         <div style="padding:10px;">
-                            <button class="btn btn-success">邀请点击数购买</button>
-                            <button class="btn btn-danger" ng-click="Pay()">余额购买</button>
-                            <div style="color:#050aff;padding: 10px;font-size: 15px;">
-                                邀请链接:http://localhost:9090/index.html#/product/1
+                            资源
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" ng-class="{'active in':!product.isBuy}" id="product-Sup2">
+                        <div style="padding:10px;">
+                            <button class="btn btn-success" ng-if="!product.invInfo" ng-click="createInv()">邀请点击数购买</button>
+                            <button class="btn btn-success" ng-click="Pay('inv')" ng-show="product.invInfo" ng-disabled="product.invInfo&&product.invInfo.need_inv_count>product.invInfo.inv_count">
+                                已完成邀请，获取资源
+                            </button>
+                            <button class="btn btn-danger" ng-click="Pay('amt')" ng-disabled="product.isBuy">余额购买</button>
+                            <div style="color:red;font-size: 15px;" ng-if="product.invInfo">
+                                需邀请点击数{{product.invInfo.need_inv_count}}次,现已邀请{{product.invInfo.inv_count}}次
+                            </div>
+                            <div style="color:#050aff;padding: 10px;font-size: 15px;" ng-if="product.invInfo">
+                                邀请链接:{{invUrl+product.invInfo.inv_code}}
+                            </div>
+                            <div style="color:#050aff;padding: 10px;font-size: 15px;" ng-if="!product.invInfo">
                             </div>
                             <div style="color:#050aff;padding:0px 10px 0px 10px;">
-                                如何邀请:
-                                <div>1.复制上面邀请链接分享给朋友,别人访问该点击会增加点击数.</div>
-                                <div>2.同一个商品一个IP只能增加一次点击数.</div>
-                                <div>3.当数量到达后即可获取资源.</div>
+                                什么是邀请点击数购买:
+                                <div>1.点击生成邀请链接</div>
+                                <div>2.复制邀请链接分享给朋友,别人访问该点击会增加点击数.</div>
+                                <div>3.同一个商品一个IP只能增加一次点击数.</div>
+                                <div>4.当数量到达后即可获取资源.</div>
                             </div>
                         </div>
                     </div>

@@ -19,6 +19,7 @@ using Newtonsoft.Json.Serialization;
 using wg_core.Domain;
 using wg_frame_work;
 using wg_service;
+using wg_service.Orders;
 using wg_service.Products;
 using wg_service.Users;
 
@@ -66,6 +67,8 @@ namespace web_api
             services.AddTransient<ProductService>();
             services.AddTransient<ProductTypeService>();
             services.AddTransient<MoneyKeyService>();
+            services.AddTransient<InvitationService>();
+            services.AddTransient<OrderService>();
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             #endregion
 

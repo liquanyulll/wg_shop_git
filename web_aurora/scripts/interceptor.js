@@ -11,7 +11,7 @@
             if (response.status === 401) {
                 //这里清掉，在登陆页面就可以判断，如果有token就直接跳
                 $window.localStorage.removeItem("ApiToken");
-                window.location = "login.html";
+                window.location = "login.html" + "?returnUrl=" + encodeURIComponent(location.href);
             } else {
                 modalService.Message(response.statusText, "响应错误");
             }

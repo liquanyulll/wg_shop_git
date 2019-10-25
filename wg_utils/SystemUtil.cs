@@ -47,6 +47,16 @@ namespace wg_utils
 
         }
 
+        public static string GenerateStringId()
+        {
+            long i = 1;
+            foreach (byte b in Guid.NewGuid().ToByteArray())
+            {
+                i *= ((int)b + 1);
+            }
+            return string.Format("{0:x}", i - DateTime.Now.Ticks);
+        }
+
         /// <summary>
         /// 產生圖形驗證碼。
         /// </summary>
