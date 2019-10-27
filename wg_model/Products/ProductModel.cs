@@ -16,6 +16,8 @@ namespace wg_model.Products
         public int Stock { get; set; }
         public bool IsBuy { get; set; }
         public string BuyWay { get; set; }
+        public List<string> ProductSources { get; set; }
         public InvitationModel InvInfo { get; set; }
+        public List<ProductDetailImgModel> DetailImgs { get; set; }
     }
 }

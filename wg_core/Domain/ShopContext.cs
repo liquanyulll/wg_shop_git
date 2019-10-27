@@ -236,7 +236,7 @@ namespace wg_core.Domain
 
                 entity.Property(e => e.img_alt).HasColumnType("varchar(50)");
 
-                entity.Property(e => e.img_desc).HasColumnType("mediumint(9)");
+                entity.Property(e => e.img_desc).HasColumnType("varchar(2000)");
 
                 entity.Property(e => e.img_url)
                     .IsRequired()

@@ -1,0 +1,26 @@
+﻿<ul class="nav nav-tabs">
+	<li class="active">
+		<a data-target="#my-Sup1" data-toggle="tab" aria-expanded="false">卡密充值</a>
+	</li>
+</ul>
+<div class="tab-content">
+	<div class="tab-pane fade  active in" id="my-Sup1">
+		<div style="padding:10px;">
+			<div style="padding-left: 15px;">
+				<p><a style="color:red;text-decoration: underline;"><strong>点击购买卡密</strong></a></p>
+				<p><span style="color:#2901f6;">什么是卡密？</span></p>
+				<p><span style="color:#09b000;">答：通过购买等值的卡密来充值余额度（如：购买1元的卡密充值为为1元，5元的卡密充值额度为5元）</span></p>
+				<p><span style="color:#2901f6;">为什么购买了卡密，但是余额没变？</span></p>
+				<p><span style="color:#09b000;">答：购买卡密后，复制卡密到下方文本框中，点击充值！</span></p>
+				<p><span style="color:#2901f6;">为什么充值成功后，余额没有变化？</span></p>
+				<p><span style="color:#09b000;">答：偶然现象，请刷新页面！</span></p>
+			</div>
+			<form class="navbar-form navbar-left">
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="请输入卡密" ng-model="moneykey">
+				</div>
+				<button type="button" class="btn btn-success" ng-click="GoSave()">确认充值</button>
+			</form>
+		</div>
+	</div>
+</div>

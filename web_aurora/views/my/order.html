@@ -1,0 +1,60 @@
+﻿<ul class="nav nav-tabs">
+	<li class="active">
+		<a data-target="#my-Sup1" data-toggle="tab" aria-expanded="false">订单列表</a>
+	</li>
+</ul>
+<div class="tab-content">
+	<div class="tab-pane fade  active in" id="my-Sup1">
+		<div style="padding:10px;">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="input-group">
+								<span class="input-group-addon">商品名称</span>
+								<div class="form-group">
+									<input class="form-control" type="text" id="ProductName" ng-model="queryVar.ProductName" placeholder="模糊搜索">
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<button class="btn btn-info" type="button" id="btnQuary" ng-click="Search()">
+								<span class="glyphicon glyphicon-search" aria-hidden="true"></span> 查询
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<table class="table table-striped table-bordered table-hover">
+						<tr class="head">
+							<td>编号</td>
+							<td>商品名称</td>
+							<td>订单流水号</td>
+							<td>付款方式</td>
+							<td>付款金额</td>
+							<td>下单时间</td>
+						</tr>
+						<!--ng-click="SelectedRow(x)" ng-dblclick="ShowDetail()"-->
+						<tr ng-repeat="x in InfoList">
+							<td ng-bind="x.order_id"></td>
+							<td ><a ui-sref="index.productList.product({id:{{x.productId}}})" target="_blank" ng-bind="x.productName"></a></td>
+							<td ng-bind="x.order_guid"></td>
+							<td ng-bind="x.pay_way=='amt'?'现金':'邀请点'"></td>
+							<td ><span ng-bind="x.amt"></span><span ng-bind="x.pay_way=='amt'?'元':'点'"></span></td>
+							<td ng-bind="x.created_time|date:'yyyy-MM-dd hh:mm:ss'"></td>
+						</tr>
+					</table>
+
+					<div style="margin-left:15px;">
+						<div class="row">
+							<tm-pagination conf="paginationConf">
+							</tm-pagination>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -9,7 +9,7 @@ namespace wg_core.Domain
         public int ProductId { get; set; }
         public string img_url { get; set; }
         public string img_alt { get; set; }
-        public int? img_desc { get; set; }
+        public string img_desc { get; set; }
         public int Sort { get; set; }
         public string Enabled { get; set; }
 

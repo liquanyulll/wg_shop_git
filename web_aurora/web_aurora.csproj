@@ -127,7 +127,7 @@
     <Content Include="scripts\app.js" />
     <Content Include="scripts\controllers\Accounts\AccountDirective.js" />
     <Content Include="scripts\controllers\main\main.js" />
-    <Content Include="scripts\controllers\MyCtrl.js" />
+    <Content Include="scripts\controllers\my\MyCtrl.js" />
     <Content Include="scripts\controllers\ProductCtrl.js" />
     <Content Include="scripts\controllers\ProductListCtrl.js" />
     <Content Include="scripts\controllers\LoginCtrl.js" />
@@ -189,6 +189,8 @@
     <Content Include="views\main\home.html" />
     <Content Include="views\main\navbar.html" />
     <Content Include="views\my.html" />
+    <Content Include="views\my\order.html" />
+    <Content Include="views\my\money.html" />
     <Content Include="views\product-list.html" />
     <Content Include="views\login.html" />
     <Content Include="views\pre-process.html" />

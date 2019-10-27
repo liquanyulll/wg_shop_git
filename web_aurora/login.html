@@ -1,178 +1,178 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <title></title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" rel="stylesheet">
-    <style>
-        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-            display: none !important;
-        }
+	<meta charset="utf-8" />
+	<title></title>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" rel="stylesheet">
+	<style>
+		[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+			display: none !important;
+		}
 
-        .tips span {
-            color: red;
-        }
-    </style>
+		.tips span {
+			color: red;
+		}
+	</style>
 </head>
 <body>
-    <div class="ng-cloak" ng-app="login" ng-controller="loginCtrl">
-        <div ng-include="'views/template/loading.html'"></div>
-        <div style="padding:10% 30% 0 30% ">
-            <div class="panel panel-default" style="padding:10px;width: 450px;">
+	<div class="ng-cloak" ng-app="login" ng-controller="loginCtrl">
+		<div ng-include="'views/template/loading.html'"></div>
+		<div style="padding:10% 30% 0 30% ">
+			<div class="panel panel-default" style="padding:10px;width: 450px;">
 
-                <ul class="nav nav-tabs">
-                    <li class="active">
-                        <a data-target="#Sup1" data-toggle="tab" aria-expanded="true">登陆账号</a>
-                    </li>
-                    <li class="">
-                        <a href="regiest.html">注册账号</a>
-                    </li>
-                </ul>
-                <div class="tab-content">
-                    <div class="tab-pane fade  active in" id="#Sup1">
-                        <div style="padding:10px;">
-                            <form  name="loginForm" novalidate>
-                                <fieldset>
-                                    <div class="form-group">
-                                        <label for="disabledTextInput">手机号</label>
-                                        <input type="text" class="form-control" placeholder="用户名、手机号"
-                                               ng-pattern="/^(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9]|19[0-9])\d{8}$/"
-                                               name="UserName" ng-model="loginInfo.UserName"
-                                               ng-required="true"
-                                               maxlength="11">
-                                        <div class="tips" ng-if="loginForm.UserName.$dirty&&loginForm.UserName.$invalid">
-                                            <span ng-if="loginForm.UserName.$error.pattern||loginForm.UserName.$error.required" id="helpBlock2" class="help-block">请正确输入您的手机号码</span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="disabledSelect">登陆密码</label>
-                                        <input type="password" class="form-control" placeholder="请输入密码"
-                                               name="Password" ng-minlength="6" ng-model="loginInfo.Password"
-                                               ng-required="true">
-                                        <div class="tips" ng-if="loginForm.Password.$dirty&&loginForm.Password.$invalid">
-                                            <span ng-if="loginForm.Password.$error.required||loginForm.Password.$error.minlength">密码长度不能小于6位</span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <label for="disabledTextInput">图形验证码</label>
-                                        <div class="form-inline">
-                                            <input type="text" id="disabledTextInput" class="form-control"
-                                                   style="width:50%;"
-                                                   ng-model="loginInfo.VerfyCode" codeDes="{{VerifyPicInfo.codeDes}}"
-                                                   name="verfyCode"
-                                                   ng-required="true" ng-minlength="4" maxlength="4" is-verfycodeok
-                                                   placeholder="请输入图形验证码">
-                                            <img id="GL_StandardCode" src="{{VerifyPicInfo.imgUrl}}" style="cursor: pointer;" ng-click="vgCode()" title="看不清，点击换一张" />
-                                            <div class="tips" ng-if="loginForm.verfyCode.$dirty&&loginForm.verfyCode.$invalid">
-                                                <span ng-if="loginForm.verfyCode.$error.verfycodeok">图片验证码输入错误</span>
-                                                <span ng-if="loginForm.verfyCode.$error.minlength||loginForm.verfyCode.$error.required">请正确输入图片验证码</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--<div class="checkbox">
-        <label>
-            <input type="checkbox"> Can't check this
-        </label>
-    </div>-->
-                                    <button type="submit" class="btn btn-success btn-block btn-flat" ng-click="login()"  ng-disabled="loginForm.$invalid">登陆</button>
-                                    <br />
-                                    <div class="form-group">
-                                        <div class="mbl"><a href="/" title="找回密码" style="color:green;">找回密码</a> <span class="text-muted mhs">|</span> <span class="text-muted">还没有注册账号？</span> <a href="/regiest.html" title="立即注册" style="color:green;">立即注册</a></div>
-                                    </div>
-                                </fieldset>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="#Sup2">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular-route.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="https://cdn.bootcss.com/angular-ui-bootstrap/0.12.1/ui-bootstrap-tpls.min.js"></script>
-    <script src="https://cdn.bootcss.com/ngStorage/0.2.0/ngStorage.min.js"></script>
-    <script src="scripts/environment/jqueryextends.js"></script>
-    <script src="scripts/environment/common.js"></script>
-    <script src="scripts/environment/directives.js"></script>
-    <script src="scripts/environment/services.js"></script>
-    <script src="scripts/controllers/Accounts/AccountService.js"></script>
-    <script src="scripts/controllers/Accounts/AccountDirective.js"></script>
-    <script type="text/javascript">
-        var app = angular.module("login", ["ngRoute", "ngStorage", "ui.bootstrap", "directives", "services", 'AccountServiceApp', 'AccountDirectivesApp']);
-    </script>
-    <script src="scripts/interceptor.js"></script>
-    <script type="text/javascript">
-       
-        app.config(['$routeProvider', "$locationProvider", "$httpProvider", function ($routeProvider, $locationProvider, $httpProvider) {
-            //这是因为Angular 1.6 版本更新后 对路由做的处理，这样才可以和以前版本一样正常使用
-            $locationProvider.hashPrefix('');
-            $locationProvider.html5Mode({
-                enabled: true,
-                requireBase: false
-            });
-            //注册拦截器
-            $httpProvider.interceptors.push("httpInterceptor");
-        }]);
-        app.controller('loginCtrl', function ($scope, $http, $window, $location, $rootScope, ModalService, HttpCatchService, AccountService) {
-
-            var returnUrl = decodeURIComponent($location.search().returnUrl);
-             var token = $window.localStorage.ApiToken;
-            if (token) {
-                window.location = "main.html";
-            }
-
-            $scope.loginInfo = {};
-
-            //图片验证码
-            $scope.vgCode = function (even) {
-                //点击图片刷新验证密码
-                //图片点击触发不了，所以直接用div的事件了
-                //但若是文本框触发的刷新事件就不管
-                if (even && even.target.tagName == "INPUT") {
-                    return;
-                }
-
-                $http.get(GetUrl('api/Home/GetVerifCode')).then(function (res) {
-                    $scope.VerifyPicInfo = res.data;
-                }).catch(function (resp) {
-                    console.log(resp);
-                });
-            }
-
-            $scope.vgCode(null);
+				<ul class="nav nav-tabs">
+					<li class="active">
+						<a data-target="#Sup1" data-toggle="tab" aria-expanded="true">登陆账号</a>
+					</li>
+					<li class="">
+						<a href="regiest.html">注册账号</a>
+					</li>
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane fade  active in" id="#Sup1">
+						<div style="padding:10px;">
+							<form name="loginForm" novalidate>
+								<fieldset>
+									<div class="form-group">
+										<label for="disabledTextInput">手机号</label>
+										<input type="text" class="form-control" placeholder="用户名、手机号"
+											   ng-pattern="/^(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9]|19[0-9])\d{8}$/"
+											   name="UserName" ng-model="loginInfo.UserName"
+											   ng-required="true"
+											   maxlength="11">
+										<div class="tips" ng-if="loginForm.UserName.$dirty&&loginForm.UserName.$invalid">
+											<span ng-if="loginForm.UserName.$error.pattern||loginForm.UserName.$error.required" id="helpBlock2" class="help-block">请正确输入您的手机号码</span>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="disabledSelect">登陆密码</label>
+										<input type="password" class="form-control" placeholder="请输入密码"
+											   name="Password" ng-minlength="6" ng-model="loginInfo.Password"
+											   ng-required="true">
+										<div class="tips" ng-if="loginForm.Password.$dirty&&loginForm.Password.$invalid">
+											<span ng-if="loginForm.Password.$error.required||loginForm.Password.$error.minlength">密码长度不能小于6位</span>
+										</div>
+									</div>
+									<div class="form-group ">
+										<label for="disabledTextInput">图形验证码</label>
+										<div class="form-inline">
+											<input type="text" id="disabledTextInput" class="form-control"
+												   style="width:50%;"
+												   ng-model="loginInfo.VerfyCode" codeDes="{{VerifyPicInfo.codeDes}}"
+												   name="verfyCode"
+												   ng-required="true" ng-minlength="4" maxlength="4" is-verfycodeok
+												   placeholder="请输入图形验证码">
+											<img id="GL_StandardCode" src="{{VerifyPicInfo.imgUrl}}" style="cursor: pointer;" ng-click="vgCode()" title="看不清，点击换一张" />
+											<div class="tips" ng-if="loginForm.verfyCode.$dirty&&loginForm.verfyCode.$invalid">
+												<span ng-if="loginForm.verfyCode.$error.verfycodeok">图片验证码输入错误</span>
+												<span ng-if="loginForm.verfyCode.$error.minlength||loginForm.verfyCode.$error.required">请正确输入图片验证码</span>
+											</div>
+										</div>
+									</div>
+									<!--<div class="checkbox">
+										<label>
+											<input type="checkbox"> Can't check this
+										</label>
+									</div>-->
+									<button type="submit" class="btn btn-success btn-block btn-flat" ng-click="login()" ng-disabled="loginForm.$invalid">登陆</button>
+									<br />
+									<div class="form-group">
+										<div class="mbl"><a href="/" title="找回密码" style="color:green;">找回密码</a> <span class="text-muted mhs">|</span> <span class="text-muted">还没有注册账号？</span> <a href="/regiest.html" title="立即注册" style="color:green;">立即注册</a></div>
+									</div>
+								</fieldset>
+							</form>
+						</div>
+					</div>
+					<div class="tab-pane fade" id="#Sup2">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 
-            //注册
-            $scope.login = function () {
-                if ($scope.loginForm.$invalid) {
-                    return;
-                }
-                $scope.loginInfo.CodeDes = $scope.VerifyPicInfo.codeDes;
-                $scope.loginInfo.CodeDes = $scope.VerifyPicInfo.codeDes;
-                $http.post(GetUrl('api/Account/Login'), $scope.loginInfo).then(function (resp) {
-                    $window.localStorage.ApiToken = resp.data;
-                    //$rootScope.CurrentPage = "";
-                    setTimeout(function () {
-                        if (returnUrl) {
-                            window.location = returnUrl;
-                        } else {
-                            window.location = "main.html";
-                        }
-                    }, 1200);
-                }).catch(function (resp) {
-                    console.log(resp);
-                });
-            }
-        });
-    </script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular-route.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script src="https://cdn.bootcss.com/angular-ui-bootstrap/0.12.1/ui-bootstrap-tpls.min.js"></script>
+	<script src="https://cdn.bootcss.com/ngStorage/0.2.0/ngStorage.min.js"></script>
+	<script src="scripts/environment/jqueryextends.js"></script>
+	<script src="scripts/environment/common.js"></script>
+	<script src="scripts/environment/directives.js"></script>
+	<script src="scripts/environment/services.js"></script>
+	<script src="scripts/controllers/Accounts/AccountService.js"></script>
+	<script src="scripts/controllers/Accounts/AccountDirective.js"></script>
+	<script type="text/javascript">
+		var app = angular.module("login", ["ngRoute", "ngStorage", "ui.bootstrap", "directives", "services", 'AccountServiceApp', 'AccountDirectivesApp']);
+	</script>
+	<script src="scripts/interceptor.js"></script>
+	<script type="text/javascript">
+
+		app.config(['$routeProvider', "$locationProvider", "$httpProvider", function ($routeProvider, $locationProvider, $httpProvider) {
+			//这是因为Angular 1.6 版本更新后 对路由做的处理，这样才可以和以前版本一样正常使用
+			$locationProvider.hashPrefix('');
+			$locationProvider.html5Mode({
+				enabled: true,
+				requireBase: false
+			});
+			//注册拦截器
+			$httpProvider.interceptors.push("httpInterceptor");
+		}]);
+		app.controller('loginCtrl', function ($scope, $http, $window, $location, $rootScope, ModalService, HttpCatchService, AccountService) {
+
+			var returnUrl = $location.search().returnUrl ? decodeURIComponent($location.search().returnUrl) : "";
+			var token = $window.localStorage.ApiToken;
+			if (token) {
+				window.location = "main.html";
+			}
+
+			$scope.loginInfo = {};
+
+			//图片验证码
+			$scope.vgCode = function (even) {
+				//点击图片刷新验证密码
+				//图片点击触发不了，所以直接用div的事件了
+				//但若是文本框触发的刷新事件就不管
+				if (even && even.target.tagName == "INPUT") {
+					return;
+				}
+
+				$http.get(GetUrl('api/Home/GetVerifCode')).then(function (res) {
+					$scope.VerifyPicInfo = res.data;
+				}).catch(function (resp) {
+					console.log(resp);
+				});
+			}
+
+			$scope.vgCode(null);
+
+
+			//注册
+			$scope.login = function () {
+				if ($scope.loginForm.$invalid) {
+					return;
+				}
+				$scope.loginInfo.CodeDes = $scope.VerifyPicInfo.codeDes;
+				$scope.loginInfo.CodeDes = $scope.VerifyPicInfo.codeDes;
+				$http.post(GetUrl('api/Account/Login'), $scope.loginInfo).then(function (resp) {
+					$window.localStorage.ApiToken = resp.data;
+					//$rootScope.CurrentPage = "";
+					setTimeout(function () {
+						if (returnUrl) {
+							window.location = returnUrl;
+						} else {
+							window.location = "main.html";
+						}
+					}, 1200);
+				}).catch(function (resp) {
+					console.log(resp);
+				});
+			}
+		});
+	</script>
 </body>
 </html>

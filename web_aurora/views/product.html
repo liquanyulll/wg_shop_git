@@ -52,7 +52,7 @@
                 <div class="tab-content">
                     <div class="tab-pane fade" ng-class="{'active in':product.isBuy}" id="product-Sup1" ng-if="product.isBuy">
                         <div style="padding:10px;">
-                            资源
+							<div class="alert alert-success" role="alert" ng-repeat="x in product.productSources" ng-bind="x"></div>
                         </div>
                     </div>
                     <div class="tab-pane fade" ng-class="{'active in':!product.isBuy}" id="product-Sup2">
@@ -61,7 +61,7 @@
                             <button class="btn btn-success" ng-click="Pay('inv')" ng-show="product.invInfo" ng-disabled="product.invInfo&&product.invInfo.need_inv_count>product.invInfo.inv_count">
                                 已完成邀请，获取资源
                             </button>
-                            <button class="btn btn-danger" ng-click="Pay('amt')" ng-disabled="product.isBuy">余额购买</button>
+                            <button class="btn btn-danger" ng-click="Pay('amt')">余额购买</button>
                             <div style="color:red;font-size: 15px;" ng-if="product.invInfo">
                                 需邀请点击数{{product.invInfo.need_inv_count}}次,现已邀请{{product.invInfo.inv_count}}次
                             </div>
@@ -94,7 +94,14 @@
                 <div class="tab-content">
                     <div class="tab-pane fade active in" id="product-Sup1">
                         <div style="padding:10px;">
-                            详情介绍
+                          <div class="row" ng-repeat="img in product.detailImgs" style="padding-bottom: 20px;">
+							  <div class="col-sm-12">
+								  <div style="padding-bottom: 10px;">{{$index+1}}.<strong ng-bind="img.img_desc"></strong></div>
+								  <div>
+									  <img ng-src="{{img.img_url}}"/>
+								  </div>
+							  </div>
+						  </div>
                         </div>
                     </div>
                 </div>
