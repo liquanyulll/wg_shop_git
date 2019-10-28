@@ -280,6 +280,7 @@
     <Content Include="testRoot\app\css\bootstrap-3.0.0\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="testRoot\app\css\bootstrap-3.0.0\fonts\glyphicons-halflings-regular.woff" />
     <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -92,7 +92,7 @@ namespace web_api
             {
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
-                WebConfig.SystemWebDomain = "http://localhost:9091/";
+                WebConfig.SystemWebDomain = "http://139.9.203.54:9091/";
             }
 
             //启用跨域

@@ -12,7 +12,8 @@ namespace web_api.Controllers
     [ApiController]
     public class HomeController : BaseController
     {
-        public HomeController() {
+        public HomeController()
+        {
 
         }
 
@@ -21,7 +22,7 @@ namespace web_api.Controllers
         public JsonResult GetVerifCode(int codeLength = 4)
         {
             var codeDesResult = EncyryptionUtil.DESEncrypt(SystemUtil.GetRandomVGCharac(codeLength));
-            var result = new { codeDes = codeDesResult, imgUrl = WebConfig.SystemWebDomain+"api/home/GetVerfyPic?code=" + codeDesResult };
+            var result = new { codeDes = codeDesResult, imgUrl = WebConfig.SystemWebDomain + "api/home/GetVerfyPic?code=" + codeDesResult };
             return SucessResult(result);
         }
 
@@ -29,9 +30,17 @@ namespace web_api.Controllers
         [HttpGet("GetVerfyPic")]
         public ActionResult GetVerfyPic(string code)
         {
-            var accCode = EncyryptionUtil.DESDecrypt(code);
-            var bytes = SystemUtil.CreateValidateGraphic(accCode);
-            return File(bytes, @"image/jpeg");
+            try
+            {
+                var accCode = EncyryptionUtil.DESDecrypt(code);
+                var bytes = SystemUtil.CreateValidateGraphic(accCode);
+                return File(bytes, @"image/jpeg");
+            }
+            catch (Exception ex)
+            {
+                return Json(ex.Message);
+            }
+
         }
 
         [SkipUserFilter]

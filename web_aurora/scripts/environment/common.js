@@ -1,5 +1,5 @@
 ﻿function GetUrl(targetUrl) {
-    return "http://localhost:9091/" + targetUrl;
+    return "http://139.9.203.54:9091/" + targetUrl;
 }
 
 //date
