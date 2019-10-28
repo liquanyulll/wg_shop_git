@@ -78,7 +78,7 @@
 									<button type="submit" class="btn btn-success btn-block btn-flat" ng-click="login()" ng-disabled="loginForm.$invalid">登陆</button>
 									<br />
 									<div class="form-group">
-										<div class="mbl"><a href="/" title="找回密码" style="color:green;">找回密码</a> <span class="text-muted mhs">|</span> <span class="text-muted">还没有注册账号？</span> <a href="/regiest.html" title="立即注册" style="color:green;">立即注册</a></div>
+										<div class="mbl"><a href="reset.html" title="找回密码" style="color:green;">找回密码</a> <span class="text-muted mhs">|</span> <span class="text-muted">还没有注册账号？</span> <a  href="regiest.html" title="立即注册" style="color:green;">立即注册</a></div>
 									</div>
 								</fieldset>
 							</form>
@@ -115,22 +115,30 @@
 		app.config(['$routeProvider', "$locationProvider", "$httpProvider", function ($routeProvider, $locationProvider, $httpProvider) {
 			//这是因为Angular 1.6 版本更新后 对路由做的处理，这样才可以和以前版本一样正常使用
 			$locationProvider.hashPrefix('');
-			$locationProvider.html5Mode({
-				enabled: true,
-				requireBase: false
-			});
+			//$locationProvider.html5Mode({
+			//	enabled: true,
+			//	requireBase: false
+			//});
 			//注册拦截器
 			$httpProvider.interceptors.push("httpInterceptor");
 		}]);
 		app.controller('loginCtrl', function ($scope, $http, $window, $location, $rootScope, ModalService, HttpCatchService, AccountService) {
 
-			var returnUrl = $location.search().returnUrl ? decodeURIComponent($location.search().returnUrl) : "";
+			var url = $location.absUrl();
+			var returnUrl = "";
+			if (url.lastIndexOf("returnUrl=") > 0) {
+				returnUrl = decodeURIComponent(url.substring(url.lastIndexOf("returnUrl=") + 10));
+			}
 			var token = $window.localStorage.ApiToken;
 			if (token) {
 				window.location = "main.html";
 			}
 
 			$scope.loginInfo = {};
+
+			$scope.goRegiest = function () {
+				window.location = "regiest.html";
+			}
 
 			//图片验证码
 			$scope.vgCode = function (even) {

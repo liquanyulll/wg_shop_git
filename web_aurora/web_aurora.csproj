@@ -122,7 +122,6 @@
     <Content Include="modern-business\pricing.html" />
     <Content Include="modern-business\services.html" />
     <Content Include="modern-business\sidebar.html" />
-    <Content Include="my.html" />
     <Content Include="regiest.html" />
     <Content Include="scripts\app.js" />
     <Content Include="scripts\controllers\Accounts\AccountDirective.js" />
@@ -195,6 +194,7 @@
     <Content Include="views\login.html" />
     <Content Include="views\pre-process.html" />
     <Content Include="views\publish-info.html" />
+    <Content Include="reset.html" />
     <Content Include="views\template\confirm.html" />
     <Content Include="views\template\loading.html" />
     <Content Include="views\template\message.html" />

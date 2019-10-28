@@ -77,8 +77,11 @@ AccountDirectivesApp.directive('againPass', ['$http', 'AccountService', function
                 if (!n) {
                     c.$setValidity('passok', true);
                     return;
-                }
-                if (scope.registerInfo.Password == n) {
+				}
+
+				//注册和登录都用到了先写死
+				var info = scope.registerInfo ? scope.registerInfo : scope.resetInfo;
+				if (info.Password == n) {
                     c.$setValidity('passok', true);
                 } else {
                     c.$setValidity('passok', false);

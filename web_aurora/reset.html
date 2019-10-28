@@ -16,86 +16,87 @@
 	</style>
 </head>
 <body>
-	<div class="ng-cloak" style="" ng-app="regiest" ng-controller="regiestCtrl">
+	<div class="ng-cloak" ng-app="login" ng-controller="loginCtrl">
 		<div ng-include="'views/template/loading.html'"></div>
 		<div style="padding:10% 30% 0 30% ">
 			<div class="panel panel-default" style="padding:10px;width: 450px;">
 
 				<ul class="nav nav-tabs">
-					<li class="">
-						<a href="login.html">登陆账号</a>
-					</li>
 					<li class="active">
-						<a data-target="#Sup2" data-toggle="tab" aria-expanded="false">注册账号</a>
+						<a data-target="#Sup1" data-toggle="tab" aria-expanded="true">找回密码</a>
 					</li>
 				</ul>
 				<div class="tab-content">
-					<div class="tab-pane fade " id="#Sup1">
-
-					</div>
-					<div class="tab-pane fade active in" id="#Sup2">
+					<div class="tab-pane fade  active in" id="#Sup1">
 						<div style="padding:10px;">
-							<form name="register_Form" novalidate ng-submit="doreg()">
+							<form name="resetForm" novalidate>
 								<fieldset>
-									<div class="form-group">
-										<label for="disabledTextInput">手机号码<span style="color:#70d445 !important;"></span></label>
-										<input type="text" ng-model="registerInfo.UserName" name="tb_UserName" class="form-control" placeholder="手机号必填" ng-required="true" maxlength="11" ng-pattern="/1[3|5|7|8|][0-9]{9}/" is-exists>
-										<div class="tips" ng-if="register_Form.tb_UserName.$dirty&&register_Form.tb_UserName.$invalid">
-											<span ng-if="register_Form.tb_UserName.$error.exists&&(!register_Form.tb_UserName.$error.pattern&&!register_Form.tb_UserName.$error.required)" id="helpBlock2" class="help-block">该用户名已被注册</span>
-											<span ng-if="register_Form.tb_UserName.$error.pattern||register_Form.tb_UserName.$error.required" id="helpBlock2" class="help-block">请正确输入您的手机号码</span>
+									<div class="form-group" ng-show="!New">
+										<label for="disabledTextInput">手机号</label>
+										<input type="text" class="form-control" placeholder="用户名、手机号"
+											   ng-pattern="/^(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9]|19[0-9])\d{8}$/"
+											   name="UserName" ng-model="resetInfo.UserName"
+											   ng-required="true"
+											   maxlength="11">
+										<div class="tips" ng-if="resetForm.UserName.$dirty&&resetForm.UserName.$invalid">
+											<span ng-if="resetForm.UserName.$error.pattern||resetForm.UserName.$error.required" id="helpBlock2" class="help-block">请正确输入您的手机号码</span>
 										</div>
 									</div>
-									<div class="form-group ">
+									<div class="form-group " ng-show="!New">
 										<label for="disabledTextInput">图形验证码</label>
 										<div class="form-inline">
 											<input type="text" id="disabledTextInput" class="form-control"
 												   style="width:50%;"
-												   ng-model="registerInfo.VerfyCode" codeDes="{{VerifyPicInfo.codeDes}}"
+												   ng-model="resetInfo.VerfyCode" codeDes="{{VerifyPicInfo.codeDes}}"
 												   name="verfyCode"
 												   ng-required="true" ng-minlength="4" maxlength="4" is-verfycodeok
 												   placeholder="请输入图形验证码">
 											<img id="GL_StandardCode" src="{{VerifyPicInfo.imgUrl}}" style="cursor: pointer;" ng-click="vgCode()" title="看不清，点击换一张" />
-											<div class="tips" ng-if="register_Form.verfyCode.$dirty&&register_Form.verfyCode.$invalid">
-												<span ng-if="register_Form.verfyCode.$error.verfycodeok">图片验证码输入错误</span>
-												<span ng-if="register_Form.verfyCode.$error.minlength||register_Form.verfyCode.$error.required">请正确输入图片验证码</span>
+											<div class="tips" ng-if="resetForm.verfyCode.$dirty&&resetForm.verfyCode.$invalid">
+												<span ng-if="resetForm.verfyCode.$error.verfycodeok">图片验证码输入错误</span>
+												<span ng-if="resetForm.verfyCode.$error.minlength||resetForm.verfyCode.$error.required">请正确输入图片验证码</span>
 											</div>
 										</div>
 									</div>
-									<div class="form-group ">
+									<div class="form-group" ng-show="!New">
 										<label for="disabledTextInput">手机验证码</label>
 										<div class="form-inline">
 											<input type="text" id="disabledTextInput" class="form-control"
 												   style="width:60%;"
-												   ng-model="registerInfo.SMSCode"
 												   name="smsCode"
-												   mobile="{{registerInfo.UserName}}"
-												   smstype="register" ng-required="true" ng-minlength="4" maxlength="4" is-smscodeok
+												   ng-model="resetInfo.SMSCode"
+												   mobile="{{resetInfo.UserName}}"
+												   smstype="reset" ng-required="true" ng-minlength="4" maxlength="4" is-smscodeok
 												   placeholder="请输入手机验证码">
 											<button class="btn btn-info" ng-if="waitingSMS==60" ng-click="sendSMSCode()">发送手机验证码</button>
 											<button class="btn btn-info" ng-if="waitingSMS!=60" title="可以重新发送" ng-disabled="true">{{waitingSMS}}秒后</button>
-											<div class="tips" ng-if="register_Form.smsCode.$dirty&&register_Form.smsCode.$invalid">
-												<span ng-if="register_Form.smsCode.$error.smscodeok">请输入正确的手机验证码</span>
+											<div class="tips" ng-if="resetForm.smsCode.$dirty&&resetForm.smsCode.$invalid">
+												<span ng-if="resetForm.smsCode.$error.smscodeok">请输入正确的手机验证码</span>
 											</div>
 										</div>
 									</div>
-									<div class="form-group">
-										<label for="disabledTextInput">登陆密码</label>
-										<input type="password" id="disabledTextInput" class="form-control" ng-model="registerInfo.Password" name="tb_password" ng-minlength="6" maxlength="20" ng-required="true" placeholder="6-16位英文、数字、符号，区分大小写">
-										<div class="tips" ng-if="register_Form.tb_password.$dirty&&register_Form.tb_password.$invalid">
-											<span ng-if="register_Form.tb_password.$error.required">请输入密码</span>
-											<span ng-if="register_Form.tb_password.$error.minlength">密码小于6位数</span>
+									<div class="form-group" ng-if="New">
+										<label for="disabledTextInput">新密码</label>
+										<input type="password" id="disabledTextInput" class="form-control" ng-model="resetInfo.Password" name="tb_password" ng-minlength="6" maxlength="20" ng-required="true" placeholder="6-16位英文、数字、符号，区分大小写">
+										<div class="tips" ng-if="resetForm.tb_password.$dirty&&resetForm.tb_password.$invalid">
+											<span ng-if="resetForm.tb_password.$error.required">请输入密码</span>
+											<span ng-if="resetForm.tb_password.$error.minlength">密码小于6位数</span>
 										</div>
 									</div>
-									<div class="form-group">
+									<div class="form-group" ng-if="New">
 										<label for="disabledTextInput">确认密码</label>
-										<input type="password" id="disabledTextInput" class="form-control" ng-model="registerInfo.againPassword" name="tb_againPassword" maxlength="20" again-pass ng-required="true" placeholder="6-16位英文、数字、符号，区分大小写">
-										<div class="tips" ng-if="register_Form.tb_againPassword.$dirty&&register_Form.tb_againPassword.$invalid">
-											<span ng-if="register_Form.tb_againPassword.$error.required">请再次输入密码</span>
-											<span ng-if="register_Form.tb_againPassword.$error.passok">与前次密码不相同</span>
+										<input type="password" id="disabledTextInput" class="form-control" ng-model="resetInfo.againPassword" name="tb_againPassword" maxlength="20" again-pass ng-required="true" placeholder="6-16位英文、数字、符号，区分大小写">
+										<div class="tips" ng-if="resetForm.tb_againPassword.$dirty&&resetForm.tb_againPassword.$invalid">
+											<span ng-if="resetForm.tb_againPassword.$error.required">请再次输入密码</span>
+											<span ng-if="resetForm.tb_againPassword.$error.passok">与前次密码不相同</span>
 										</div>
 									</div>
-									<!--  btn-flat -->
-									<button type="submit" class="btn btn-primary btn-block btn-flat" ng-disabled="register_Form.$invalid">注册</button>
+									<button ng-if="!New" type="submit" class="btn btn-info btn-block btn-flat" ng-click="next()" ng-disabled="resetForm.$invalid">下一步</button>
+									<button ng-if="New" type="submit" class="btn btn-success btn-block btn-flat" ng-click="reset()" ng-disabled="resetForm.$invalid">确认修改</button>
+									<br />
+									<div class="form-group">
+										<div class="mbl"><a href="/" title="返回登陆" style="color:green;"><返回登陆</a></div>
+									</div>
 								</fieldset>
 							</form>
 						</div>
@@ -104,6 +105,8 @@
 			</div>
 		</div>
 	</div>
+
+
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
@@ -112,7 +115,6 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	<script src="https://cdn.bootcss.com/angular-ui-bootstrap/0.12.1/ui-bootstrap-tpls.min.js"></script>
 	<script src="https://cdn.bootcss.com/ngStorage/0.2.0/ngStorage.min.js"></script>
-
 	<script src="scripts/environment/jqueryextends.js"></script>
 	<script src="scripts/environment/common.js"></script>
 	<script src="scripts/environment/directives.js"></script>
@@ -120,24 +122,26 @@
 	<script src="scripts/controllers/Accounts/AccountService.js"></script>
 	<script src="scripts/controllers/Accounts/AccountDirective.js"></script>
 	<script type="text/javascript">
-		var app = angular.module("regiest", ["ngRoute", "ngStorage", "ui.bootstrap", "directives", "services", 'AccountServiceApp', 'AccountDirectivesApp']);
+		var app = angular.module("login", ["ngRoute", "ngStorage", "ui.bootstrap", "directives", "services", 'AccountServiceApp', 'AccountDirectivesApp']);
 	</script>
 	<script src="scripts/interceptor.js"></script>
 	<script type="text/javascript">
+
 		app.config(['$routeProvider', "$locationProvider", "$httpProvider", function ($routeProvider, $locationProvider, $httpProvider) {
 			//这是因为Angular 1.6 版本更新后 对路由做的处理，这样才可以和以前版本一样正常使用
 			$locationProvider.hashPrefix('');
 			//注册拦截器
 			$httpProvider.interceptors.push("httpInterceptor");
 		}]);
-		app.controller('regiestCtrl', function ($scope, $http, $window, $location, $rootScope, ModalService, HttpCatchService, AccountService) {
+		app.controller('loginCtrl', function ($scope, $http, $window, $location, $rootScope, ModalService, HttpCatchService, AccountService) {
+			var returnUrl = $location.search().returnUrl ? decodeURIComponent($location.search().returnUrl) : "";
 			var token = $window.localStorage.ApiToken;
 			if (token) {
-				window.location = "index.html";
+				window.location = "main.html";
 			}
 
 			$scope.waitingSMS = 60;
-			$scope.registerInfo = {};
+			$scope.resetInfo = {};
 
 			//图片验证码
 			$scope.vgCode = function (even) {
@@ -150,26 +154,24 @@
 
 				$http.get(GetUrl('api/Home/GetVerifCode')).then(function (res) {
 					$scope.VerifyPicInfo = res.data;
-					console.log($scope.VerifyPicInfo);
 				}).catch(function (resp) {
 					console.log(resp);
 				});
 			}
-
 			$scope.vgCode(null);
 
-			$scope.$watch('registerInfo.Password', function (n) {
-				$scope.checkAgainPass($scope.registerInfo.againPassword);
+			$scope.$watch('resetInfo.Password', function (n) {
+				$scope.checkAgainPass($scope.resetInfo.againPassword);
 			});
 
 			//手机验证码
 			$scope.sendSMSCode = function () {
-				if (!$scope.register_Form.tb_UserName.$valid) {
+				if (!$scope.resetForm.UserName.$valid) {
 					ModalService.Message('请先正确填写手机号码');
 					return;
 				}
 
-				if ($scope.register_Form.verfyCode.$valid && $scope.waitingSMS == 60) {
+				if ($scope.resetForm.verfyCode.$valid && $scope.waitingSMS == 60) {
 					var SMStimer = setInterval(
 						function () {
 							$scope.$apply(function () {
@@ -182,8 +184,8 @@
 						},
 						1000
 					);
-					$scope.registerInfo.SMSCode = '';
-					AccountService.sendSMSCode($scope.registerInfo.VerfyCode, $scope.VerifyPicInfo.codeDes, $scope.registerInfo.UserName, "register").then(function (data) {
+					$scope.resetInfo.SMSCode = '';
+					AccountService.sendSMSCode($scope.resetInfo.VerfyCode, $scope.VerifyPicInfo.codeDes, $scope.resetInfo.UserName, "reset").then(function (data) {
 					}).catch(function (resp) {
 						$scope.isWaitingSMS = "N";
 						//ModalService.Message("手机验证码发送失败，请稍后重试");
@@ -194,18 +196,25 @@
 				}
 			}
 
+			$scope.next = function () {
+				$scope.New = true;
+			}
+
 			//注册
-			$scope.doreg = function () {
-				if ($scope.register_Form.$invalid) {
+			$scope.reset = function () {
+				if ($scope.resetForm.$invalid) {
 					return;
 				}
-
-				$http.post(GetUrl('api/Account/Register'), $scope.registerInfo).then(function (resp) {
-					ModalService.Message("注册成功,请登陆");
-					angular.element("#loading").fadeIn();
-
+				$scope.resetInfo.CodeDes = $scope.VerifyPicInfo.codeDes;
+				$http.post(GetUrl('api/Account/Login'), $scope.resetInfo).then(function (resp) {
+					$window.localStorage.ApiToken = resp.data;
+					//$rootScope.CurrentPage = "";
 					setTimeout(function () {
-						window.location = "login.html";
+						if (returnUrl) {
+							window.location = returnUrl;
+						} else {
+							window.location = "main.html";
+						}
 					}, 1200);
 				}).catch(function (resp) {
 					console.log(resp);
@@ -213,6 +222,5 @@
 			}
 		});
 	</script>
-
 </body>
 </html>
