@@ -3,19 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wg_core", "wg_core\wg_core.csproj", "{A09E625A-B27D-4EBE-839E-42E441E27461}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "wg_core", "wg_core\wg_core.csproj", "{A09E625A-B27D-4EBE-839E-42E441E27461}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wg_service", "wg_service\wg_service.csproj", "{AC2E323E-5659-4C28-9B11-F98ACE9C178F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "wg_service", "wg_service\wg_service.csproj", "{AC2E323E-5659-4C28-9B11-F98ACE9C178F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wg_frame_work", "wg_frame_work\wg_frame_work.csproj", "{122F6017-5091-4EE6-8669-8E939285A672}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "wg_frame_work", "wg_frame_work\wg_frame_work.csproj", "{122F6017-5091-4EE6-8669-8E939285A672}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wg_model", "wg_model\wg_model.csproj", "{798C3975-BD52-4F35-B187-34F420699966}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "wg_model", "wg_model\wg_model.csproj", "{798C3975-BD52-4F35-B187-34F420699966}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wg_utils", "wg_utils\wg_utils.csproj", "{D980504E-D070-4899-8E3C-817DFEFC9EFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "wg_utils", "wg_utils\wg_utils.csproj", "{D980504E-D070-4899-8E3C-817DFEFC9EFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "web_api", "web_api\web_api.csproj", "{A714881C-43AA-494E-B178-98243C1C9554}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "web_api", "web_api\web_api.csproj", "{A714881C-43AA-494E-B178-98243C1C9554}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "web_aurora", "web_aurora\web_aurora.csproj", "{F6A66D13-F103-49C7-92E6-6B9F4175989B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Support", "Support", "{6DCEBD89-4CE3-4A1E-9D14-2E3764DEB938}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{7A948099-7D1A-4801-B48A-AFFE874A1A83}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,9 +55,16 @@ Global
 		{F6A66D13-F103-49C7-92E6-6B9F4175989B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6A66D13-F103-49C7-92E6-6B9F4175989B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6A66D13-F103-49C7-92E6-6B9F4175989B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A948099-7D1A-4801-B48A-AFFE874A1A83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A948099-7D1A-4801-B48A-AFFE874A1A83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A948099-7D1A-4801-B48A-AFFE874A1A83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A948099-7D1A-4801-B48A-AFFE874A1A83}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7A948099-7D1A-4801-B48A-AFFE874A1A83} = {6DCEBD89-4CE3-4A1E-9D14-2E3764DEB938}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {35384D6F-54FA-4FE1-AC6E-57E14B93E489}
