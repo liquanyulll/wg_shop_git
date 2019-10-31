@@ -13,6 +13,7 @@ namespace wg_core.Domain
         public string used_ip { get; set; }
         public DateTime? used_time { get; set; }
         public DateTime created_time { get; set; }
+        public string plat { get; set; }
 
         public virtual t1_user used_user_ { get; set; }
     }

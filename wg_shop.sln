@@ -19,6 +19,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "web_aurora", "web_aurora\we
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wg_biz", "wg_biz\wg_biz.csproj", "{B71B3BAD-72AE-4DDC-A94E-6DE50FB2A940}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Support", "Support", "{6DCEBD89-4CE3-4A1E-9D14-2E3764DEB938}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{7A948099-7D1A-4801-B48A-AFFE874A1A83}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +57,10 @@ Global
 		{F6A66D13-F103-49C7-92E6-6B9F4175989B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6A66D13-F103-49C7-92E6-6B9F4175989B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6A66D13-F103-49C7-92E6-6B9F4175989B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A948099-7D1A-4801-B48A-AFFE874A1A83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A948099-7D1A-4801-B48A-AFFE874A1A83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A948099-7D1A-4801-B48A-AFFE874A1A83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A948099-7D1A-4801-B48A-AFFE874A1A83}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B71B3BAD-72AE-4DDC-A94E-6DE50FB2A940}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B71B3BAD-72AE-4DDC-A94E-6DE50FB2A940}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B71B3BAD-72AE-4DDC-A94E-6DE50FB2A940}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -60,6 +68,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7A948099-7D1A-4801-B48A-AFFE874A1A83} = {6DCEBD89-4CE3-4A1E-9D14-2E3764DEB938}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {35384D6F-54FA-4FE1-AC6E-57E14B93E489}

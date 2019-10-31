@@ -30,11 +30,16 @@ namespace wg_core.Domain
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-//            if (!optionsBuilder.IsConfigured)
-//            {
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-//                optionsBuilder.UseMySql("Data Source=cdb-6b5bkzin.gz.tencentcdb.com;port=10033;Initial Catalog=wg_shop;User ID=wbadmin;Password=wbadmin123");
-//            }
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseMySql("Data Source=cdb-6b5bkzin.gz.tencentcdb.com;port=10033;Initial Catalog=wg_shop;User ID=wbadmin;Password=wbadmin123");
+            }
+
+            //            if (!optionsBuilder.IsConfigured)
+            //            {
+            //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+            //                optionsBuilder.UseMySql("Data Source=cdb-6b5bkzin.gz.tencentcdb.com;port=10033;Initial Catalog=wg_shop;User ID=wbadmin;Password=wbadmin123");
+            //            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -131,6 +136,9 @@ namespace wg_core.Domain
                     .WithMany(p => p.t1_user_moneykey)
                     .HasForeignKey(d => d.used_user_id)
                     .HasConstraintName("Fk_t1_user_moneykey");
+
+                entity.Property(e => e.plat)
+                   .HasColumnType("varchar(50)");
             });
 
             modelBuilder.Entity<t2_product>(entity =>
