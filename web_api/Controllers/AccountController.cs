@@ -6,7 +6,9 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using wg_core.Domain;
 using wg_frame_work;
+using wg_model;
 using wg_model.Accounts;
+using wg_model.Products;
 using wg_service.Users;
 using wg_utils;
 
@@ -36,6 +38,31 @@ namespace web_api.Controllers
         }
 
         #region 用户 
+        [HttpGet("CT")]
+        [SkipUserFilter]
+        public async Task<JsonResult> CheckToken(string tk)
+        {
+            var user = RedisCachedHelper.Get<UserModel>(tk);
+            return SucessResult(user == null ? "N" : "Y");
+        }
+
+        [HttpPost("SearchLoginHistory")]
+        public async Task<JsonResult> SearchLoginHistory([FromBody]BaseListQueryModel model)
+        {
+            var user = _authenticationSupport.CurrentUser;
+            var histories = _accountService.SearchLoginHistory(user.UserId, pageIndex: model.PageIndex.Value, pageSize: model.PageSize.Value);
+            var historiesModels = _mapper.Map<List<UserLoginHistoryModel>>(histories.ToList());
+            var result = new BaseListResultModel()
+            {
+                TotalPages = histories.TotalPages,
+                TotalItems = histories.TotalCount,
+                CurrentPage = histories.PageIndex,
+                ItemsPerPage = histories.PageSize,
+                ContentList = historiesModels
+            };
+            return SucessResult(result);
+        }
+
         [HttpGet("CurrentUser")]
         [SkipUserFilter]
         public async Task<JsonResult> GetCurrentUser()
@@ -86,6 +113,10 @@ namespace web_api.Controllers
                 userModel.LoginTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                 userModel.LoginIP = HttpContext.Connection.RemoteIpAddress.ToString();
                 userModel.Amount = user.t1_user_attr.Amount;
+
+                //记录登陆IP
+                await _accountService.AddLoginIp(user.UserId, userModel.LoginIP);
+
                 var token = _authenticationSupport.SignIn(userModel);
                 return SucessResult(token);
             }

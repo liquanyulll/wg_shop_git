@@ -63,8 +63,8 @@
 }
 
  .product-div img {
-        width: 250px;
-        height: 250px;
+        width: 200px;
+        height: 200px;
     }
 
 .product-div price {
@@ -75,15 +75,15 @@
         margin-top: 6px;
         font-size: 16px;
     }
-.product-div .kucun {
-        background-color: green;
-        color: #fff !important;
+    .product-div .kucun {
+        /*background-color: green;*/
+        color: #a9a0a0 !important;
         display: inline-block;
         border-radius: 3px;
         float: right;
         padding: 0 2px;
-        font-size: 16px;
-}
+        font-size: 15px;
+    }
   
 
 

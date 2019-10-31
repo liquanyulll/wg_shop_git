@@ -12,6 +12,7 @@ namespace wg_model.Products
         public string ProductDesc { get; set; }
         public string LogImg { get; set; }
         public decimal Price { get; set; }
+        public string Inspection { get; set; }
         public int Invs { get; set; }
         public int Stock { get; set; }
         public bool IsBuy { get; set; }

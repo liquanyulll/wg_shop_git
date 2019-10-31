@@ -6,6 +6,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using wg_core.Domain;
 using wg_frame_work;
+using wg_model;
 using wg_model.Accounts;
 using wg_service.Users;
 using wg_utils;
@@ -29,6 +30,23 @@ namespace web_api.Controllers
             _accountService = accountService;
             _authenticationSupport = authenticationSupport;
             _moneyKeyService = moneyKeyService;
+        }
+
+        [HttpPost("SearchUsedHistory")]
+        public async Task<JsonResult> SearchUsedHistory([FromBody]BaseListQueryModel model)
+        {
+            var user = _authenticationSupport.CurrentUser;
+            var his = _moneyKeyService.SearchUsedHistory(user.UserId, pageIndex: model.PageIndex.Value, pageSize: model.PageSize.Value);
+            var hisModels = _mapper.Map<List<MoneyKeyModel>>(his.ToList());
+            var result = new BaseListResultModel()
+            {
+                TotalPages = his.TotalPages,
+                TotalItems = his.TotalCount,
+                CurrentPage = his.PageIndex,
+                ItemsPerPage = his.PageSize,
+                ContentList = hisModels
+            };
+            return SucessResult(result);
         }
 
         [HttpPost("UsedMk")]

@@ -94,14 +94,15 @@
                 <div class="tab-content">
                     <div class="tab-pane fade active in" id="product-Sup1">
                         <div style="padding:10px;">
-                          <div class="row" ng-repeat="img in product.detailImgs" style="padding-bottom: 20px;">
-							  <div class="col-sm-12">
-								  <div style="padding-bottom: 10px;">{{$index+1}}.<strong ng-bind="img.img_desc"></strong></div>
-								  <div>
-									  <img ng-src="{{img.img_url}}"/>
-								  </div>
-							  </div>
-						  </div>
+                            <div class="alert alert-success" role="alert"  ng-bind="product.inspection" ng-show="product.inspection"></div>
+                            <div class="row" ng-repeat="img in product.detailImgs" style="padding-bottom: 20px;">
+                                <div class="col-sm-12">
+                                    <div style="padding-bottom: 10px;">{{$index+1}}.<strong ng-bind="img.img_desc"></strong></div>
+                                    <div>
+                                        <img ng-src="{{img.img_url}}" />
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

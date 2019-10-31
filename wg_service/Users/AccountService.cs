@@ -1,8 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using wg_core;
 using wg_core.Domain;
 using wg_utils;
 
@@ -72,6 +74,28 @@ namespace wg_service.Users
                 Amount = 0,//账户上余额
             };
             await _context.t1_user.AddAsync(entity);
+            await _context.SaveChangesAsync();
+        }
+
+        public IPagedList<t1_user_login_history> SearchLoginHistory(int? userId = null, int pageIndex = 0, int pageSize = int.MaxValue)
+        {
+            var query = _context.t1_user_login_history.AsQueryable();
+            if (userId.HasValue)
+                query = query.Where(e => e.user_id == userId.Value);
+
+            query = query.OrderByDescending(c => c.login_time);
+            var result = new PagedList<t1_user_login_history>(query, pageIndex, pageSize);
+            return result;
+        }
+
+        public async Task AddLoginIp(int userId, string ip)
+        {
+            _context.t1_user_login_history.Add(new t1_user_login_history
+            {
+                login_time = DateTime.Now,
+                ipaddress = ip,
+                user_id = userId
+            });
             await _context.SaveChangesAsync();
         }
     }

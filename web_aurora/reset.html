@@ -51,7 +51,7 @@
 												   name="verfyCode"
 												   ng-required="true" ng-minlength="4" maxlength="4" is-verfycodeok
 												   placeholder="请输入图形验证码">
-											<img id="GL_StandardCode" src="{{VerifyPicInfo.imgUrl}}" style="cursor: pointer;" ng-click="vgCode()" title="看不清，点击换一张" />
+											<img id="GL_StandardCode" ng-src="{{VerifyPicInfo.imgUrl}}" style="cursor: pointer;" ng-click="vgCode()" title="看不清，点击换一张" />
 											<div class="tips" ng-if="resetForm.verfyCode.$dirty&&resetForm.verfyCode.$invalid">
 												<span ng-if="resetForm.verfyCode.$error.verfycodeok">图片验证码输入错误</span>
 												<span ng-if="resetForm.verfyCode.$error.minlength||resetForm.verfyCode.$error.required">请正确输入图片验证码</span>
@@ -134,10 +134,17 @@
 			$httpProvider.interceptors.push("httpInterceptor");
 		}]);
 		app.controller('loginCtrl', function ($scope, $http, $window, $location, $rootScope, ModalService, HttpCatchService, AccountService) {
-			var returnUrl = $location.search().returnUrl ? decodeURIComponent($location.search().returnUrl) : "";
 			var token = $window.localStorage.ApiToken;
 			if (token) {
-				window.location = "main.html";
+                if (token) {
+                    $http.get(GetUrl('api/Account/CT?tk=' + token)).then(function (res) {
+                        if (res.data == "Y") {
+                            window.location = "main.html";
+                        }
+                    }).catch(function (resp) {
+                        console.log(resp);
+                    });
+                }
 			}
 
 			$scope.waitingSMS = 60;

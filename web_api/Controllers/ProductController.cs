@@ -68,6 +68,7 @@ namespace web_api.Controllers
             var model = _mapper.Map<ProductModel>(product);
             var detailImgs = _mapper.Map<List<ProductDetailImgModel>>(product.t2_product_detail_Img.ToList());
             model.DetailImgs = detailImgs;
+            model.Inspection = product.t2_product_spec.FirstOrDefault(e => e.Key == "inspection")?.Value;
 
             if (user != null)
             {

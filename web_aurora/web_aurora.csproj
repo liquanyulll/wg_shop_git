@@ -188,6 +188,8 @@
     <Content Include="views\main\home.html" />
     <Content Include="views\main\navbar.html" />
     <Content Include="views\my.html" />
+    <Content Include="views\my\money-history.html" />
+    <Content Include="views\my\login-history.html" />
     <Content Include="views\my\order.html" />
     <Content Include="views\my\money.html" />
     <Content Include="views\product-list.html" />

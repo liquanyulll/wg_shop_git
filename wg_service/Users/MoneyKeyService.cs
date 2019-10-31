@@ -2,8 +2,10 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using wg_core;
 using wg_core.Domain;
 using wg_frame_work;
 using wg_utils;
@@ -18,10 +20,20 @@ namespace wg_service.Users
         {
             _context = context;
         }
+        public IPagedList<t1_user_moneykey> SearchUsedHistory(int? userId = null, int pageIndex = 0, int pageSize = int.MaxValue)
+        {
+            var query = _context.t1_user_moneykey.AsQueryable();
+            if (userId.HasValue)
+                query = query.Where(e => e.used_user_id == userId.Value);
+
+            query = query.OrderByDescending(c => c.used_time);
+            var result = new PagedList<t1_user_moneykey>(query, pageIndex, pageSize);
+            return result;
+        }
 
         public async Task<decimal> UserdMoneyKey(int userId, string mk)
         {
-            var user = await _context.t1_user.Include(e=>e.t1_user_attr).FirstOrDefaultAsync(e => e.UserId == userId);
+            var user = await _context.t1_user.Include(e => e.t1_user_attr).FirstOrDefaultAsync(e => e.UserId == userId);
             if (user == null)
             {
                 throw new NotImplementedException("用户不存在");

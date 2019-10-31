@@ -15,6 +15,8 @@ namespace wg_core.Domain
         {
         }
 
+        public virtual DbSet<t1_user_login_history> t1_user_login_history { get; set; }
+
         public virtual DbSet<t0_system> t0_system { get; set; }
         public virtual DbSet<t1_user> t1_user { get; set; }
         public virtual DbSet<t1_user_attr> t1_user_attr { get; set; }
@@ -409,6 +411,20 @@ namespace wg_core.Domain
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_t4_order_UserId");
+            });
+
+            modelBuilder.Entity<t1_user_login_history>(entity =>
+            {
+                entity.HasKey(e => e.his_id)
+                    .HasName("PRIMARY");
+
+                entity.Property(e => e.his_id).HasColumnType("int(11)");
+
+                entity.Property(e => e.ipaddress).HasColumnType("varchar(50)");
+
+                entity.Property(e => e.login_time).HasColumnType("datetime");
+
+                entity.Property(e => e.user_id).HasColumnType("int(11)");
             });
         }
     }

@@ -64,7 +64,15 @@
 			url: '/order',
 			templateUrl: 'views/my/order.html',
 			controller: "MyOrderCtrl"
-		});
+        }).state('index.my.loginhis', {
+            url: '/loginhis',
+            templateUrl: 'views/my/login-history.html',
+            controller: "MyLoginHistoryCtrl"
+        }).state('index.my.mkhis', {
+            url: '/mkhis',
+            templateUrl: 'views/my/money-history.html',
+            controller: "MyMoneyKeyUsedHistoryCtrl"
+        });
 	//.state("index.Page1", {
 	//    params: { ddf: null, product_id: null, accp: null },
 	//    //url: '/{contactId:[0-9]{1,4}}',
