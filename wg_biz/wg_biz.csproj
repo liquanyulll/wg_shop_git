@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\wg_core\wg_core.csproj" />
+    <ProjectReference Include="..\wg_model\wg_model.csproj" />
+    <ProjectReference Include="..\wg_utils\wg_utils.csproj" />
+  </ItemGroup>
+
+</Project>

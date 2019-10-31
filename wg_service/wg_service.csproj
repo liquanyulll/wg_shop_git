@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\wg_biz\wg_biz.csproj" />
     <ProjectReference Include="..\wg_core\wg_core.csproj" />
     <ProjectReference Include="..\wg_frame_work\wg_frame_work.csproj" />
     <ProjectReference Include="..\wg_utils\wg_utils.csproj" />

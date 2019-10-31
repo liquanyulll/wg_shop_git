@@ -200,21 +200,14 @@
 				$scope.New = true;
 			}
 
-			//注册
 			$scope.reset = function () {
 				if ($scope.resetForm.$invalid) {
 					return;
 				}
 				$scope.resetInfo.CodeDes = $scope.VerifyPicInfo.codeDes;
-				$http.post(GetUrl('api/Account/Login'), $scope.resetInfo).then(function (resp) {
-					$window.localStorage.ApiToken = resp.data;
-					//$rootScope.CurrentPage = "";
+                $http.post(GetUrl('api/Account/ResetPassword'), $scope.resetInfo).then(function (resp) {
 					setTimeout(function () {
-						if (returnUrl) {
-							window.location = returnUrl;
-						} else {
-							window.location = "main.html";
-						}
+                        window.location = "login.html";
 					}, 1200);
 				}).catch(function (resp) {
 					console.log(resp);
