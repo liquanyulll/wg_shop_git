@@ -92,36 +92,6 @@
     <Content Include="js\jquery.js" />
     <Content Include="login.html" />
     <Content Include="main.html" />
-    <Content Include="modern-business\404.html" />
-    <Content Include="modern-business\about.html" />
-    <Content Include="modern-business\bin\contact_me.php" />
-    <Content Include="modern-business\blog-home-1.html" />
-    <Content Include="modern-business\blog-home-2.html" />
-    <Content Include="modern-business\blog-post.html" />
-    <Content Include="modern-business\contact.html" />
-    <Content Include="modern-business\css\bootstrap.css" />
-    <Content Include="modern-business\css\bootstrap.min.css" />
-    <Content Include="modern-business\css\modern-business.css" />
-    <Content Include="modern-business\faq.html" />
-    <Content Include="modern-business\font-awesome\css\font-awesome.css" />
-    <Content Include="modern-business\font-awesome\css\font-awesome.min.css" />
-    <Content Include="modern-business\font-awesome\fonts\fontawesome-webfont.svg" />
-    <Content Include="modern-business\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="modern-business\full-width.html" />
-    <Content Include="modern-business\index.html" />
-    <Content Include="modern-business\js\bootstrap.js" />
-    <Content Include="modern-business\js\bootstrap.min.js" />
-    <Content Include="modern-business\js\contact_me.js" />
-    <Content Include="modern-business\js\jqBootstrapValidation.js" />
-    <Content Include="modern-business\js\jquery.js" />
-    <Content Include="modern-business\portfolio-1-col.html" />
-    <Content Include="modern-business\portfolio-2-col.html" />
-    <Content Include="modern-business\portfolio-3-col.html" />
-    <Content Include="modern-business\portfolio-4-col.html" />
-    <Content Include="modern-business\portfolio-item.html" />
-    <Content Include="modern-business\pricing.html" />
-    <Content Include="modern-business\services.html" />
-    <Content Include="modern-business\sidebar.html" />
     <Content Include="regiest.html" />
     <Content Include="scripts\app.js" />
     <Content Include="scripts\controllers\Accounts\AccountDirective.js" />
@@ -129,12 +99,6 @@
     <Content Include="scripts\controllers\my\MyCtrl.js" />
     <Content Include="scripts\controllers\ProductCtrl.js" />
     <Content Include="scripts\controllers\ProductListCtrl.js" />
-    <Content Include="scripts\controllers\LoginCtrl.js" />
-    <Content Include="scripts\controllers\NavbarCtrl.js" />
-    <Content Include="scripts\controllers\PreProcessCtrl.js" />
-    <Content Include="scripts\controllers\PublishInfoCtrl.js" />
-    <Content Include="scripts\controllers\UnProcessCtrl.js" />
-    <Content Include="scripts\controllers\WebSiteCtrl.js" />
     <Content Include="scripts\environment\directives.js" />
     <Content Include="scripts\environment\AngularBaseUtil.js" />
     <Content Include="scripts\environment\common.js" />
@@ -143,46 +107,6 @@
     <Content Include="scripts\plugin\tm.pagination.js" />
     <Content Include="scripts\environment\services.js" />
     <Content Include="scripts\route.js" />
-    <Content Include="testRoot\app\css\bootstrap-3.0.0\css\bootstrap-theme.css" />
-    <Content Include="testRoot\app\css\bootstrap-3.0.0\css\bootstrap-theme.min.css" />
-    <Content Include="testRoot\app\css\bootstrap-3.0.0\css\bootstrap.css" />
-    <Content Include="testRoot\app\css\bootstrap-3.0.0\css\bootstrap.min.css" />
-    <Content Include="testRoot\app\css\bootstrap-3.0.0\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="testRoot\app\css\bootstrap-3.0.0\js\bootstrap.js" />
-    <Content Include="testRoot\app\css\bootstrap-3.0.0\js\bootstrap.min.js" />
-    <Content Include="testRoot\app\css\index.css" />
-    <Content Include="testRoot\app\js\angular-1.3.0.js" />
-    <Content Include="testRoot\app\js\angular-animate.js" />
-    <Content Include="testRoot\app\js\angular-ui-router.js" />
-    <Content Include="testRoot\app\js\ui-bootstrap-tpls-0.11.0.js" />
-    <Content Include="testRoot\app\tpls2\about.html" />
-    <Content Include="testRoot\app\tpls2\home-list.html" />
-    <Content Include="testRoot\app\tpls2\home.html" />
-    <Content Include="testRoot\app\tpls2\table-data.html" />
-    <Content Include="testRoot\app\tpls3\addusertypeform.html" />
-    <Content Include="testRoot\app\tpls3\highendusers.html" />
-    <Content Include="testRoot\app\tpls3\home.html" />
-    <Content Include="testRoot\app\tpls3\index.html" />
-    <Content Include="testRoot\app\tpls3\lowusers.html" />
-    <Content Include="testRoot\app\tpls3\normalusers.html" />
-    <Content Include="testRoot\app\tpls3\topbar.html" />
-    <Content Include="testRoot\app\tpls3\usermng.html" />
-    <Content Include="testRoot\app\tpls\state1.html" />
-    <Content Include="testRoot\app\tpls\state1.list.html" />
-    <Content Include="testRoot\app\tpls\state2.html" />
-    <Content Include="testRoot\app\tpls\state2.list.html" />
-    <Content Include="testRoot\app\UIRoute1.html" />
-    <Content Include="testRoot\app\UIRoute1.js" />
-    <Content Include="testRoot\app\UIRoute2.html" />
-    <Content Include="testRoot\app\UIRoute2.js" />
-    <Content Include="testRoot\app\UIRoute3.html" />
-    <Content Include="testRoot\app\UIRoute3.js" />
-    <Content Include="testRoot\Main.html" />
-    <Content Include="testRoot\Page1.html" />
-    <Content Include="testRoot\Page4.html" />
-    <Content Include="testRoot\Page3.html" />
-    <Content Include="testRoot\Page2.html" />
-    <Content Include="testRoot\PageTab.html" />
     <Content Include="views\main\footer.html" />
     <Content Include="views\main\head.html" />
     <Content Include="views\main\home.html" />
@@ -193,16 +117,11 @@
     <Content Include="views\my\order.html" />
     <Content Include="views\my\money.html" />
     <Content Include="views\product-list.html" />
-    <Content Include="views\login.html" />
-    <Content Include="views\pre-process.html" />
-    <Content Include="views\publish-info.html" />
     <Content Include="reset.html" />
     <Content Include="views\template\confirm.html" />
     <Content Include="views\template\loading.html" />
     <Content Include="views\template\message.html" />
     <Content Include="views\product.html" />
-    <Content Include="views\un-process.html" />
-    <Content Include="views\web-site.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -243,44 +162,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="modern-business\font-awesome\fonts\fontawesome-webfont.eot" />
-    <Content Include="modern-business\font-awesome\fonts\fontawesome-webfont.ttf" />
-    <Content Include="modern-business\font-awesome\fonts\fontawesome-webfont.woff" />
-    <Content Include="modern-business\font-awesome\fonts\FontAwesome.otf" />
-    <Content Include="modern-business\font-awesome\less\bordered-pulled.less" />
-    <Content Include="modern-business\font-awesome\less\core.less" />
-    <Content Include="modern-business\font-awesome\less\fixed-width.less" />
-    <Content Include="modern-business\font-awesome\less\font-awesome.less" />
-    <Content Include="modern-business\font-awesome\less\icons.less" />
-    <Content Include="modern-business\font-awesome\less\larger.less" />
-    <Content Include="modern-business\font-awesome\less\list.less" />
-    <Content Include="modern-business\font-awesome\less\mixins.less" />
-    <Content Include="modern-business\font-awesome\less\path.less" />
-    <Content Include="modern-business\font-awesome\less\rotated-flipped.less" />
-    <Content Include="modern-business\font-awesome\less\spinning.less" />
-    <Content Include="modern-business\font-awesome\less\stacked.less" />
-    <Content Include="modern-business\font-awesome\less\variables.less" />
-    <Content Include="modern-business\font-awesome\scss\font-awesome.scss" />
-    <Content Include="modern-business\font-awesome\scss\_bordered-pulled.scss" />
-    <Content Include="modern-business\font-awesome\scss\_core.scss" />
-    <Content Include="modern-business\font-awesome\scss\_fixed-width.scss" />
-    <Content Include="modern-business\font-awesome\scss\_icons.scss" />
-    <Content Include="modern-business\font-awesome\scss\_larger.scss" />
-    <Content Include="modern-business\font-awesome\scss\_list.scss" />
-    <Content Include="modern-business\font-awesome\scss\_mixins.scss" />
-    <Content Include="modern-business\font-awesome\scss\_path.scss" />
-    <Content Include="modern-business\font-awesome\scss\_rotated-flipped.scss" />
-    <Content Include="modern-business\font-awesome\scss\_spinning.scss" />
-    <Content Include="modern-business\font-awesome\scss\_stacked.scss" />
-    <Content Include="modern-business\font-awesome\scss\_variables.scss" />
-    <Content Include="modern-business\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="modern-business\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="modern-business\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="modern-business\LICENSE" />
-    <Content Include="modern-business\README.md" />
-    <Content Include="testRoot\app\css\bootstrap-3.0.0\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="testRoot\app\css\bootstrap-3.0.0\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="testRoot\app\css\bootstrap-3.0.0\fonts\glyphicons-halflings-regular.woff" />
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Web.Debug.config">
@@ -290,9 +171,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="testRoot\app\img\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
