@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json.Serialization;
@@ -46,19 +47,21 @@ namespace web_api
             //关掉自动转小写
             //services.AddMvc().AddJsonOptions(options => { options.SerializerSettings.ContractResolver = new DefaultContractResolver(); });
 
+            services.AddRazorPages();
+
             //跨域配置
-            services.AddCors(options =>
-            {
-                options.AddPolicy("AllowAllOrigins",
-                builder =>
-                {
-                    builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().AllowCredentials();
-                });
-            });
+            //services.AddCors(options =>
+            //{
+            //    options.AddPolicy("AllowAllOrigins",
+            //    builder =>
+            //    {
+            //        builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().AllowCredentials();
+            //    });
+            //});
 
             services.AddDbContext<ShopContext>(options =>
               options.UseMySql(Configuration.GetConnectionString("constring")));
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
             #region 服务注册
             services.AddTransient<HomeService>();
@@ -78,32 +81,62 @@ namespace web_api
                 options.Filters.Add(new UserFilterAttribute(new AuthenticationSupport()));
                 options.Filters.Add(typeof(GlobalExceptions));
             });
+
+            services.AddMvc().AddNewtonsoftJson();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 WebConfig.SystemWebDomain = "http://localhost:9091/";
+
+                //启用跨域
+                app.UseCors(builder =>
+                {
+                    builder.WithOrigins("http://localhost:9090/").AllowAnyMethod()
+                            .AllowAnyHeader()
+                            .AllowAnyOrigin();
+                });
             }
             else
             {
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
                 WebConfig.SystemWebDomain = "http://139.9.203.54:9091/";
+
+                //启用跨域
+                app.UseCors(builder =>
+                {
+                    builder.WithOrigins("http://www.yiyaogou.top", "http://yiyaogou.top")
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowAnyOrigin();
+                });
             }
 
-            //启用跨域
-            app.UseCors(builder =>
-            {
-                builder.AllowAnyMethod()
-                        .AllowAnyHeader()
-                        .AllowAnyOrigin();
-            });
+            //app.UseHttpsRedirection();
 
-            app.UseHttpsRedirection();
+            app.UseRouting();
+
+            app.UseAuthentication();
+
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapControllerRoute(
+            //        name: "default",
+            //        pattern: "{controller=Home}/{action=Index}/{id?}");
+            //    endpoints.MapRazorPages();
+            //});
+
+            //app.UseAuthentication();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+                endpoints.MapDefaultControllerRoute();
+            });
 
             //设置默认访问页面
             app.UseDefaultFiles();
@@ -111,8 +144,6 @@ namespace web_api
             app.UseStaticFiles();
             //初始化DI解析器
             ServiceEngin.Initialize(app.ApplicationServices);
-
-            app.UseMvc();
         }
     }
 }

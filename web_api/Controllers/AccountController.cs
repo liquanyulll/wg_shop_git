@@ -43,7 +43,8 @@ namespace web_api.Controllers
         public async Task<JsonResult> CheckToken(string tk)
         {
             var user = RedisCachedHelper.Get<UserModel>(tk);
-            return SucessResult(user == null ? "N" : "Y");
+            //return SucessResult(user == null ? "N" : "Y");
+            return Json("");
         }
 
         [HttpPost("SearchLoginHistory")]
