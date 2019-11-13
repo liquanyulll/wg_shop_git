@@ -19,7 +19,7 @@ namespace wg_service.Products
 
         public async Task<List<t2_product_type>> GetAll()
         {
-            var types = await _context.t2_product_type.AsNoTracking().OrderByDescending(e => e.Sort).ToListAsync();
+            var types = await _context.t2_product_type.Include(e => e.InversePt_Parent).AsNoTracking().OrderByDescending(e => e.Sort).ToListAsync();
             return types;
         }
     }

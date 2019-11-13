@@ -289,6 +289,9 @@ namespace wg_core.Domain
                 entity.HasKey(e => e.Pt_Id)
                     .HasName("PRIMARY");
 
+                entity.HasIndex(e => e.Pt_ParentId)
+                    .HasName("Fk_t2_product_type");
+
                 entity.Property(e => e.Pt_Id).HasColumnType("int(11)");
 
                 entity.Property(e => e.Deleted)
@@ -303,7 +306,14 @@ namespace wg_core.Domain
                     .IsRequired()
                     .HasColumnType("varchar(50)");
 
+                entity.Property(e => e.Pt_ParentId).HasColumnType("int(11)");
+
                 entity.Property(e => e.Sort).HasColumnType("int(11)");
+
+                entity.HasOne(d => d.Pt_Parent)
+                    .WithMany(p => p.InversePt_Parent)
+                    .HasForeignKey(d => d.Pt_ParentId)
+                    .HasConstraintName("Fk_t2_product_type");
             });
 
             modelBuilder.Entity<t3_user_product_invitation>(entity =>

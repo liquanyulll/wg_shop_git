@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using wg_utils;
 
 namespace wg_frame_work
 {
@@ -17,7 +18,9 @@ namespace wg_frame_work
             }
             else
             {
-                context.Result = new InternalServerErrorObjectResult(new ResponseModel { IsSuccess = false, Msg = "未知错误，请联系管理员", IsShowMsg = true, Data = null });
+                var guid = Guid.NewGuid().ToString();
+                LogUtil.LogExceptionInfo("SystemError", context.Exception, $"系统错误:Guid{guid}");
+                context.Result = new InternalServerErrorObjectResult(new ResponseModel { IsSuccess = false, Msg = "未知错误，请联系管理员，查询错误号：" + guid, IsShowMsg = true, Data = null });
             }
         }
 

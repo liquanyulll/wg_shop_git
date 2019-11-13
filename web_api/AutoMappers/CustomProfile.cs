@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using wg_core.Domain;
 using wg_model.Accounts;
@@ -16,7 +17,18 @@ namespace web_api.AutoMappers
             CreateMap<t1_user, UserModel>();
             CreateMap<UserModel, t1_user>();
 
-            CreateMap<t2_product_type, ProductTypeModel>();
+            CreateMap<t2_product_type, ProductTypeModel>().BeforeMap((source, dto) =>
+            {
+                //可以较为精确的控制输出数据格式
+                dto.Childrens = source.InversePt_Parent.Select(item => new ProductTypeModel
+                {
+                    Pt_Id = item.Pt_Id,
+                    Pt_Name = item.Pt_Name,
+                    Sort = item.Sort,
+                    Enabled = item.Enabled,
+                    Deleted = item.Deleted
+                }).ToList();
+            });
             CreateMap<ProductTypeModel, t2_product_type>();
 
             CreateMap<ProductListModel, t2_product>();

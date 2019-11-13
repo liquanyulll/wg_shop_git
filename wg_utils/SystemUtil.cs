@@ -25,6 +25,11 @@ namespace wg_utils
     public class SystemUtil
     {
         /// <summary>
+        /// 当前环境
+        /// </summary>
+        public static string Env { get; set; }
+
+        /// <summary>
         /// 图形验证码随机产生器，先调用这个方法得到随机码后，再调用CreateValidateGraphic
         /// </summary>
         /// <param name="CodeLength"></param>

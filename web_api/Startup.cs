@@ -23,6 +23,7 @@ using wg_service;
 using wg_service.Orders;
 using wg_service.Products;
 using wg_service.Users;
+using wg_utils;
 
 namespace web_api
 {
@@ -100,6 +101,8 @@ namespace web_api
                             .AllowAnyHeader()
                             .AllowAnyOrigin();
                 });
+
+                SystemUtil.Env = "Dev";
             }
             else
             {
@@ -115,6 +118,8 @@ namespace web_api
                     .AllowAnyMethod()
                     .AllowAnyOrigin();
                 });
+
+                SystemUtil.Env = "Prod";
             }
 
             //app.UseHttpsRedirection();
