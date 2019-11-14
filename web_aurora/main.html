@@ -8,15 +8,17 @@
     <meta name="author" content="">
     <title>Api Info</title>
     <!-- Bootstrap Core CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/jquery-ui1.12.1.css" rel="stylesheet" />
     <!-- Custom CSS -->
     <link href="css/modern-business.css" rel="stylesheet">
+    <link href="fonts/font-slider.css" rel="stylesheet" />
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="css/tmPagination.css" rel="stylesheet" />
-    <link href="css/main.css" rel="stylesheet" />
-    <link href="css/top.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <!--<link href="css/main.css" rel="stylesheet" />-->
+    <!--<link href="css/top.css" rel="stylesheet" />-->
     <style>
         [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
             display: none !important;
@@ -28,15 +30,16 @@
     <div ng-include="'views/template/loading.html'"></div>
     <!-- /.container -->
     <!-- jQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.js"></script>
+    <script src="../js/jquery3.3.1.min.js"></script>
+    <script src="../js/jquery-ui.min1.12.1.js"></script>
+    <script src="../js/angular1.7.2.js"></script>
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular-route.min.js"></script>-->
-    <script src="https://cdn.bootcss.com/angular-ui-router/1.0.22/angular-ui-router.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="https://cdn.bootcss.com/angular-ui-bootstrap/0.12.1/ui-bootstrap-tpls.min.js"></script>
-    <script src="https://cdn.bootcss.com/ngStorage/0.2.0/ngStorage.min.js"></script>
+    <script src="../js/angular-ui-router.min1.0.22.js"></script>
+    <script src="../js/bootstrap3.2.0.min.js"></script>
+    <script src="../js/ui-bootstrap-tpls0.12.1.min.js"></script>
+    <script src="../js/jquery-ui.min1.12.1.js"></script>
+    <script src="../js/ngStorage0.2.0.min.js"></script>
+    <script src="js/photo-gallery.js"></script>
 
     <script src="scripts/environment/jqueryextends.js"></script>
     <script src="scripts/environment/common.js"></script>
@@ -50,6 +53,15 @@
     <script src="scripts/controllers/ProductListCtrl.js"></script>
     <script src="scripts/controllers/ProductCtrl.js"></script>
     <script src="scripts/controllers/my/MyCtrl.js"></script>
+
+    <script>
+        //导航栏 二级菜单点击之后防止关闭
+        $(document).ready(function () {
+            $("body").on('click', '[data-stopPropagation]', function (e) {
+                e.stopPropagation();
+            });
+        });
+    </script>
 
     <!--<script src="scripts/controllers/UnProcessCtrl.js"></script>
     <script src="scripts/controllers/WebSiteCtrl.js"></script>

@@ -4,8 +4,11 @@
 	//注册拦截器
 	$httpProvider.interceptors.push("httpInterceptor");
 
-	$urlRouterProvider.when("", "/index/productList/");
-	$urlRouterProvider.otherwise('/index/productList/');
+	//$urlRouterProvider.when("", "/index/productList/");
+	//$urlRouterProvider.otherwise('/index/productList/');
+
+    $urlRouterProvider.when("", "/index");
+	$urlRouterProvider.otherwise('/index');
 	$stateProvider
 		.state("index", {
 			url: "/index",

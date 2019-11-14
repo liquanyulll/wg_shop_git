@@ -1,8 +1,6 @@
-﻿<!-- Marketing Icons Section -->
-<div class="row" style="flex-flow: row wrap;display: flex">
+﻿<!--<div class="row" style="flex-flow: row wrap;display: flex">
     <div class=" product-div" ng-repeat="x in InfoList">
         <div class="thumbnail" ng-click="GoProduct(x)">
-            <!--<img src="..." alt="...">-->
             <img src="{{x.logImg}}" class="img-rounded" />
             <div class="caption" >
                 <p><a ng-bind="x.productDesc"></a></p>
@@ -11,26 +9,75 @@
                         <span ng-show="x.price>0">￥<span ng-bind="x.price"></span> 或 </span>
                         <span ng-show="x.invs>0"><span ng-bind="x.invs"></span>.Clicks</span>
                     </strong>
-                    <!--<div class="row">
-                        <div class="col-md-6">
 
-                        </div>
-                        <div class="col-md-6">
-                        </div>
-                    </div>-->
                     <span class="kucun">库存:<span ng-bind="x.stock"></span></span>
                 </p>
             </div>
         </div>
     </div>
+</div>-->
+
+<div id="page-content" class="single-page">
+    <div class="container">
+        <!--<div class="row">
+            <div class="col-lg-12">
+                <ul class="breadcrumb">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="category.html">Category : Mobile</a></li>
+                </ul>
+            </div>
+        </div>-->
+        <div class="row">
+            <div id="main-content" class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="products">
+                            <div class="col-lg-3 col-md-3 col-xs-12" ng-repeat="x in InfoList">
+                                <div class="product product-div" ng-click="GoProduct(x)">
+                                    <div class="image"><img src="{{x.logImg}}" /></div>
+                                    <!--<div class="buttons">
+                                        <a class="btn cart" href="#"><span class="glyphicon glyphicon-shopping-cart"></span></a>
+                                        <a class="btn wishlist" href="#"><span class="glyphicon glyphicon-heart"></span></a>
+                                        <a class="btn compare" href="#"><span class="glyphicon glyphicon-transfer"></span></a>
+                                    </div>-->
+                                    <div class="caption">
+                                        <div class="name"><h3 ng-bind="x.productName"></h3></div>
+                                        <div class="price">
+                                            <a ng-show="x.price>0">{{x.price}}.RMB</a>
+                                            <a ng-show="x.price>0&&x.invs>0"> 或 </a>
+                                            <a ng-show="x.invs>0">{{x.invs}}.Clicks</a>
+                                        </div>
+                                        <div class="rating">
+                                        <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row text-center">
+                    <!--<ul class="pagination">
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                    </ul>-->
+                    <tm-pagination conf="paginationConf">
+                    </tm-pagination>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<div class="row" style="text-align:center;margin-left: 30%;">
+
+<!--<div class="row" style="text-align:center;margin-left: 30%;">
     <div style="margin-left:15px;">
         <div class="row">
             <tm-pagination conf="paginationConf">
             </tm-pagination>
         </div>
     </div>
-</div>
+</div>-->
 <!-- /.row -->
 <!-- Portfolio Section -->

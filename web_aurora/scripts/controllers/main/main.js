@@ -25,10 +25,17 @@
 app.controller('navbarCtrl', function ($scope, $http, $window, $location) {
     $scope.ProductTypes = [];
 
+    angular.element(document).ready(function () {
+        console.log(angular.element("[data-stoppropagation]"));
+        angular.element("[data-stoppropagation]").on('click', function (e) {
+            console.log(123);
+            e.stopPropagation();
+        });
+    });
+
     //加载商品类型
     $http.get(GetUrl('api/ProductType/ProductTypes')).then(function (res) {
         $scope.ProductTypes = res.data;
-        console.log($scope.ProductTypes);
     }).catch(function (resp) {
         console.log(resp);
     });

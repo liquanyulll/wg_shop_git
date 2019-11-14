@@ -1,4 +1,4 @@
-﻿body {
+﻿/*body {
 }
 .page-list .pagination {
     float: left;
@@ -16,12 +16,12 @@
 
         .page-list .pagination .separate span:hover {
             background: none;
-        }
+        }*/
 
-.page-list .page-total {
+/*.page-list .page-total {
     float: left;
     margin: 25px 20px;
-}
+}*/
 
     .page-list .page-total input, .page-list .page-total select {
         height: 26px;
