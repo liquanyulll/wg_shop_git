@@ -1,7 +1,4 @@
 ﻿app.controller('ProductListCtrl', function ($scope, $http, $rootScope, $stateParams, $state) {
-
-	console.log($stateParams);
-
 	var init = function () {
 		$scope.InfoList = [];
 		$scope.queryVar = {};
@@ -10,14 +7,16 @@
 			currentPage: 1,
 			itemsPerPage: 20
 		};
-		$scope.paginationConf.perPageOptions = [20];
+        $scope.paginationConf.perPageOptions = [20];
+        $scope.queryVar.PName = $stateParams.pname;
 	}
 	init();
 
 	$scope.Search = function () {
 		$scope.queryVar.PageIndex = $scope.paginationConf.currentPage;
 		$scope.queryVar.PageSize = $scope.paginationConf.itemsPerPage;
-		$scope.queryVar.TypeId = $stateParams.tpid;
+        $scope.queryVar.TypeId = $stateParams.tpid;
+        $scope.queryVar.TypeAll = $stateParams.all;
 
 		$http.post(GetUrl('api/Product/Search'), $scope.queryVar).then(function (resp) {
 			var qRtn = resp.data;
@@ -33,10 +32,9 @@
 	};
 	$scope.Search();
 
-	$scope.$on("goHeadSearch", function (event, data) {
-		$scope.queryVar.PName = data;
-		$scope.Search();
-	});
+ //   $scope.$on("goHeadSearch", function (event, data) {
+	//	$scope.Search();
+	//});
 
 	$scope.GoProduct = function (x) {
 		var url = $state.href("index.productList.product", { id: x.productId });

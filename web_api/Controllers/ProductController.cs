@@ -46,7 +46,7 @@ namespace web_api.Controllers
         [HttpPost("Search")]
         public async Task<JsonResult> Search([FromBody]ProductQueryModel model)
         {
-            var products = _productService.Search(model.TypeId, model.PName, model.PageIndex.Value, model.PageSize.Value);
+            var products = _productService.Search(model.TypeAll, model.TypeId, model.PName, model.PageIndex.Value, model.PageSize.Value);
             var productModels = _mapper.Map<List<ProductListModel>>(products.ToList());
             var result = new BaseListResultModel()
             {

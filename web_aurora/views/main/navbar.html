@@ -27,11 +27,11 @@
             <ul class="nav navbar-nav">
                 <li><a ui-sref="index">首页</a></li>
                 <li class="dropdown" ng-repeat="item in ProductTypes">
-                    <a ui-sref="index.productList({tpid:{{item.pt_Id}}})" class="dropdown-toggle" data-toggle="dropdown" ng-bind="item.pt_Name"><span></span></a>
+                    <a ui-sref="index.productList({all:'Y',tpid:{{item.pt_Id}}})" class="dropdown-toggle" data-toggle="dropdown" ng-bind="item.pt_Name"><span></span></a>
                     <div class="dropdown-menu" ng-show="item.childrens&&item.childrens.length>0">
                         <div class="dropdown-inner">
                             <ul class="list-unstyled">
-                                <li ng-repeat="children in item.childrens"><a ui-sref="index.productList({tpid:{{children.pt_Id}}})" data-stopPropagation="true" ng-bind="children.pt_Name">Window</a></li>
+                                <li ng-repeat="children in item.childrens"><a ui-sref="index.productList({all:'N',tpid:{{children.pt_Id}}})" data-stopPropagation="true" ng-bind="children.pt_Name">Window</a></li>
                             </ul>
                         </div>
                     </div>

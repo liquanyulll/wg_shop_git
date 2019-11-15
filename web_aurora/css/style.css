@@ -811,3 +811,7 @@ footer {
         transform: scale(1.01);
         box-shadow: 0 0 30px #666;
     }
+
+.search-query {
+    border-radius: 4px;
+}

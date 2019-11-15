@@ -49,8 +49,22 @@
             </div>
             <div class="col-xs-6">
                 <ul class="top-link">
-                    <li><a href="account.html"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
-                    <li><a href="contact.html"><span class="glyphicon glyphicon-envelope"></span> Contact</a></li>
+                    <li ng-show="user.userId"><a href="javascript:;" ng-click="GoUserCenter()"><span class="glyphicon glyphicon-user"></span> {{user.userName}}</a></li>
+                    <li ng-show="user.userId" role="presentation" class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                            我的账户 <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a ng-click="GoUserCenter()">个人中心</a></li>
+                        </ul>
+                    </li>
+                    <li ng-show="user.userId"><a href="" ng-click="SignOut()"><span class="glyphicon glyphicon-envelope"></span> 退出登陆</a></li>
+                    <li ng-show="!user.userId">
+                        <a ng-show="!user.userId" href="login.html">登陆</a>
+                    </li>
+                    <li ng-show="!user.userId">
+                        <a ng-show="!user.userId" href="regiest.html">注册</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -64,8 +78,8 @@
         </div>
         <div class="col-md-4">
             <form class="form-search">
-                <input type="text" class="input-medium search-query">
-                <button type="submit" class="btn"><span class="glyphicon glyphicon-search"></span></button>
+                <input type="text" class="input-medium search-query"  ng-model="headSearchName" placeholder="请输入商品名称...">
+                <button type="button" ng-click="headSearch()" class="btn"><span  ng-click="headSearch()" class="glyphicon glyphicon-search"></span></button>
             </form>
         </div>
         <div class="col-md-4">

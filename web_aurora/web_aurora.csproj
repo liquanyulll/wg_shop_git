@@ -130,6 +130,7 @@
     <Content Include="regiest.html" />
     <Content Include="scripts\app.js" />
     <Content Include="scripts\controllers\Accounts\AccountDirective.js" />
+    <Content Include="scripts\controllers\main\home.js" />
     <Content Include="scripts\controllers\main\main.js" />
     <Content Include="scripts\controllers\my\MyCtrl.js" />
     <Content Include="scripts\controllers\ProductCtrl.js" />
