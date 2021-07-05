@@ -66,9 +66,9 @@ namespace web_api.Controllers
             var user = _authenticationSupport.CurrentUser;
             var product = await _productService.Get(pid);
             var model = _mapper.Map<ProductModel>(product);
-            var detailImgs = _mapper.Map<List<ProductDetailImgModel>>(product.t2_product_detail_Img.ToList());
+            var detailImgs = _mapper.Map<List<ProductDetailImgModel>>(product.t2_product_detail_Imgs.ToList());
             model.DetailImgs = detailImgs;
-            model.Inspection = product.t2_product_spec.FirstOrDefault(e => e.Key == "inspection")?.Value;
+            model.Inspection = product.t2_product_specs.FirstOrDefault(e => e.Key == "inspection")?.Value;
 
             if (user != null)
             {
@@ -85,7 +85,7 @@ namespace web_api.Controllers
                     model.IsBuy = true;
                     model.BuyWay = order.pay_way;
                     //如果是已购买 就取资源地址
-                    model.ProductSources = product.t2_product_spec.Where(e => e.Key.Contains("source")).OrderBy(e => e.config_id).Select(e => e.Value).ToList();
+                    model.ProductSources = product.t2_product_specs.Where(e => e.Key.Contains("source")).OrderBy(e => e.config_id).Select(e => e.Value).ToList();
                 }
 
             }

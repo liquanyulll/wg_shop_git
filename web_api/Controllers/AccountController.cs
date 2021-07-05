@@ -48,7 +48,7 @@ namespace web_api.Controllers
         }
 
         [HttpPost("SearchLoginHistory")]
-        public async Task<JsonResult> SearchLoginHistory([FromBody]BaseListQueryModel model)
+        public async Task<JsonResult> SearchLoginHistory([FromBody] BaseListQueryModel model)
         {
             var user = _authenticationSupport.CurrentUser;
             var histories = _accountService.SearchLoginHistory(user.UserId, pageIndex: model.PageIndex.Value, pageSize: model.PageSize.Value);
@@ -74,7 +74,7 @@ namespace web_api.Controllers
 
         [SkipUserFilter]
         [HttpPost("Register")]
-        public async Task<JsonResult> Register([FromBody]UserModel regModel)
+        public async Task<JsonResult> Register([FromBody] UserModel regModel)
         {
             //短信验证登陆
             if (!SMSCodeBaseFunc.CheckSmsCode(regModel.UserName, regModel.SMSCode, "register"))
@@ -90,7 +90,7 @@ namespace web_api.Controllers
 
         [SkipUserFilter]
         [HttpPost("Login")]
-        public async Task<JsonResult> Login([FromBody]UserModel logModel)
+        public async Task<JsonResult> Login([FromBody] UserModel logModel)
         {
             if (string.IsNullOrEmpty(logModel.UserName) || string.IsNullOrEmpty(logModel.PassWord))
             {
@@ -113,7 +113,7 @@ namespace web_api.Controllers
                 var userModel = _mapper.Map<UserModel>(user);
                 userModel.LoginTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                 userModel.LoginIP = HttpContext.Connection.RemoteIpAddress.ToString();
-                userModel.Amount = user.t1_user_attr.Amount;
+                userModel.Amount = user.Money.Value;
 
                 //记录登陆IP
                 await _accountService.AddLoginIp(user.UserId, userModel.LoginIP);
@@ -127,7 +127,7 @@ namespace web_api.Controllers
 
         [SkipUserFilter]
         [HttpPost("ResetPassword")]
-        public async Task<JsonResult> ResetPassword([FromBody]UserModel regModel)
+        public async Task<JsonResult> ResetPassword([FromBody] UserModel regModel)
         {
             if (!SMSCodeBaseFunc.CheckSmsCode(regModel.UserName, regModel.SMSCode, "reset"))
             {

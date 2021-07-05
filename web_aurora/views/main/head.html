@@ -35,9 +35,9 @@
 <nav id="top">
     <div class="container">
         <div class="row">
-            <div class="col-xs-6">
-                <select class="language">
-                    <option value="English" selected>English</option>
+            <div class="col-xs-6" style="text-align:left;">
+                <!--<select class="language">
+                    <option value="Chainese" selected>English</option>
                     <option value="France">France</option>
                     <option value="Germany">Germany</option>
                 </select>
@@ -45,22 +45,26 @@
                     <option value="USD" selected>USD</option>
                     <option value="EUR">EUR</option>
                     <option value="DDD">DDD</option>
-                </select>
+                </select>-->
+                <img src="imgs/gonggao.png" style="width: 20px;height: 20px;" />最新公告：
+                <span style="color:red;">如何出货快？ 你完全清楚么？</span>
             </div>
             <div class="col-xs-6">
                 <ul class="top-link">
-                    <li ng-show="user.userId"><a href="javascript:;" ng-click="GoUserCenter()"><span class="glyphicon glyphicon-user"></span> {{user.userName}}</a></li>
+                    <li ng-show="user.userId"><a ng-click="GoUserCenter()"><span class="glyphicon glyphicon-user"></span> {{user.userName}}</a></li>
                     <li ng-show="user.userId" role="presentation" class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:;" role="button" aria-haspopup="true" aria-expanded="false">
                             我的账户 <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
                             <li><a ng-click="GoUserCenter()">个人中心</a></li>
                         </ul>
                     </li>
-                    <li ng-show="user.userId"><a href="" ng-click="SignOut()"><span class="glyphicon glyphicon-envelope"></span> 退出登陆</a></li>
+                    <!-- class="glyphicon glyphicon-log-in" -->
+                    <li ng-show="user.userId"><a href="" ng-click="SignOut()"><span></span> 退出登录</a></li>
                     <li ng-show="!user.userId">
-                        <a ng-show="!user.userId" href="login.html">登陆</a>
+                        <!-- class="glyphicon glyphicon-log-out"  -->
+                        <a ng-show="!user.userId" href="login.html">登录</a>
                     </li>
                     <li ng-show="!user.userId">
                         <a ng-show="!user.userId" href="regiest.html">注册</a>
@@ -74,16 +78,21 @@
 <header class="container">
     <div class="row">
         <div class="col-md-4">
-            <div id="logo"><img src="imgs/logo.png" /></div>
+            <div id="logo">
+                <!---->
+                <!--<img src="imgs/logo.png" />-->
+            </div>
         </div>
         <div class="col-md-4">
             <form class="form-search">
-                <input type="text" class="input-medium search-query"  ng-model="headSearchName" placeholder="请输入商品名称...">
-                <button type="button" ng-click="headSearch()" class="btn"><span  ng-click="headSearch()" class="glyphicon glyphicon-search"></span></button>
+                <input type="text" class="input-medium search-query" ng-model="headSearchName" placeholder="请输入商品名称...">
+                <button type="button" ng-click="headSearch()" class="btn"><span ng-click="headSearch()" class="glyphicon glyphicon-search"></span></button>
             </form>
         </div>
         <div class="col-md-4">
-            <div id="cart"><a class="btn btn-1" href="cart.html"><span class="glyphicon glyphicon-shopping-cart"></span>CART : 0 ITEM</a></div>
+            <div id="cart">
+                <img src="imgs/kefuzhongxin.png" style="width: 200px; margin-left: 50px;" />
+            </div>
         </div>
     </div>
 </header>

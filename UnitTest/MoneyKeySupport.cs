@@ -22,7 +22,8 @@ namespace UnitTest
             FileStream fs = new FileStream(path, FileMode.Create);
             StreamWriter sw = new StreamWriter(fs, Encoding.UTF8);
             mk.ForEach(item=> {
-                sw.WriteLine(item + ",");
+                //sw.WriteLine(item + ",");
+                sw.WriteLine(item);
             });
             sw.Flush();
             sw.Close();
@@ -39,7 +40,7 @@ namespace UnitTest
                     created_time = DateTime.Now,
                     plat = plat
                 }).ToList();
-                db.t1_user_moneykey.AddRange(entitys);
+                db.t1_user_moneykeys.AddRange(entitys);
                 db.SaveChanges();
             }
             return new List<string>();

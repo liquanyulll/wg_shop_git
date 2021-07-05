@@ -14,7 +14,7 @@ namespace wg_utils
     /// </summary>
     public static class RedisCachedHelper
     {
-        private static readonly string Coonstr = "39.108.117.66:6379,allowAdmin=true,defaultDatabase=0";
+        private static readonly string Coonstr = "49.234.42.81:6379,password=a1b2c3d4e5f6,allowAdmin=true,defaultDatabase=0";
         private static object _locker = new Object();
         private static ConnectionMultiplexer _instance = null;
         private static readonly string EventLogName = "Redis_EventLog";

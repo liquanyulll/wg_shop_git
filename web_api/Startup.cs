@@ -61,7 +61,11 @@ namespace web_api
             //});
 
             services.AddDbContext<ShopContext>(options =>
-              options.UseMySql(Configuration.GetConnectionString("constring")));
+            {
+                var constr = Configuration.GetConnectionString("constring");
+                var version = ServerVersion.AutoDetect(constr);
+                options.UseMySql(constr, version);
+            });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
             #region 服务注册

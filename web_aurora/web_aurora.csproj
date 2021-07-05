@@ -112,6 +112,7 @@
     <Content Include="imgs\visa-curved-32px.png" />
     <Content Include="imgs\Z1.png" />
     <Content Include="index.html" />
+    <Content Include="js\angular-route.min1.7.2.js" />
     <Content Include="js\angular-ui-router.min1.0.22.js" />
     <Content Include="js\angular1.7.2.js" />
     <Content Include="js\bootstrap.js" />

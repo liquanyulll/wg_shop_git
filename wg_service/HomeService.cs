@@ -18,7 +18,7 @@ namespace wg_service
 
         public string GetData()
         {
-            var result = _dbContext.t0_system.FirstOrDefault();
+            var result = _dbContext.t0_systems.FirstOrDefault();
             return result.desc;
         }
     }

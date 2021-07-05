@@ -171,7 +171,7 @@
                                 <label>数量: </label>
                                 <input class="form-inline quantity" type="text" readonly="readonly" value="1">
                             </div>
-                            
+
                             <!--<div class="share well">
                                 <strong style="margin-right: 13px;">Share :</strong>
                                 <a href="#" class="share-btn" target="_blank">
@@ -190,13 +190,13 @@
                 </div>
                 <div class="product-desc">
                     <ul class="nav nav-tabs">
-                        <li class="active">
+                        <li ng-class="{'active':!product.isBuy}">
                             <a data-target="#product-Sup1" data-toggle="tab" aria-expanded="true">详情介绍</a>
                         </li>
-                        <li ng-if="product.isBuy">
+                        <li ng-if="product.isBuy" ng-class="{'active':product.isBuy}">
                             <a data-target="#product-Sup2" data-toggle="tab" aria-expanded="true">已购资源</a>
                         </li>
-                        <li >
+                        <li>
                             <a data-target="#product-Sup3" data-toggle="tab" aria-expanded="true">支付方式</a>
                         </li>
                     </ul>
@@ -214,14 +214,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade"  id="product-Sup2" ng-if="product.isBuy">
+                        <div class="tab-pane fade" id="product-Sup2" ng-if="product.isBuy">
                             <div style="padding:10px;">
                                 <div class="alert alert-success" role="alert" ng-repeat="x in product.productSources" ng-bind="x"></div>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="product-Sup3">
                             <div style="padding:10px;">
-                                <button class="btn btn-success" ng-if="!product.invInfo" ng-click="createInv()">邀请点击数购买</button>
+                                <button class="btn btn-success" ng-if="!product.invInfo&&product.invs>0" ng-click="createInv()">邀请点击数购买</button>
                                 <button class="btn btn-success" ng-click="Pay('inv')" ng-show="product.invInfo" ng-disabled="product.invInfo&&product.invInfo.need_inv_count>product.invInfo.inv_count">
                                     已完成邀请，获取资源
                                 </button>

@@ -28,22 +28,18 @@ namespace wg_service.Users
             user.EncryptionType = "AES";
             user.PassWord = EncyryptionUtil.AESEncrypt(password);
             user.CreatedTime = DateTime.Now;
-            //附属
-            user.t1_user_attr = new t1_user_attr
-            {
-                Amount = 0,//账户上余额
-            };
+            user.Money = 0;
             return user;
         }
 
         public async Task<bool> IsExistUserName(string userName)
         {
-            return await _context.t1_user.AnyAsync(e => (e.UserName == userName || e.Mobile == userName));
+            return await _context.t1_users.AnyAsync(e => (e.UserName == userName || e.Mobile == userName));
         }
 
         public async Task<t1_user> GetBy(string userName, string password)
         {
-            return await _context.t1_user.Include(e => e.t1_user_attr).FirstOrDefaultAsync(e => (e.UserName == userName || e.Mobile == userName) && e.PassWord == password);
+            return await _context.t1_users.FirstOrDefaultAsync(e => (e.UserName == userName || e.Mobile == userName) && e.PassWord == password);
         }
 
         /// <summary>
@@ -54,11 +50,11 @@ namespace wg_service.Users
         /// <returns></returns>
         public async Task ResetPassword(string userName, string password)
         {
-            var user = await _context.t1_user.FirstOrDefaultAsync(e => e.UserName == userName);
+            var user = await _context.t1_users.FirstOrDefaultAsync(e => e.UserName == userName);
             if (user == null)
             {
                 user = CreateEntity(userName, password);
-                _context.t1_user.Add(user);
+                _context.t1_users.Add(user);
             }
             else
             {
@@ -69,17 +65,13 @@ namespace wg_service.Users
 
         public async Task Insert(t1_user entity)
         {
-            entity.t1_user_attr = new t1_user_attr
-            {
-                Amount = 0,//账户上余额
-            };
-            await _context.t1_user.AddAsync(entity);
+            await _context.t1_users.AddAsync(entity);
             await _context.SaveChangesAsync();
         }
 
         public IPagedList<t1_user_login_history> SearchLoginHistory(int? userId = null, int pageIndex = 0, int pageSize = int.MaxValue)
         {
-            var query = _context.t1_user_login_history.AsQueryable();
+            var query = _context.t1_user_login_histories.AsQueryable();
             if (userId.HasValue)
                 query = query.Where(e => e.user_id == userId.Value);
 
@@ -90,7 +82,7 @@ namespace wg_service.Users
 
         public async Task AddLoginIp(int userId, string ip)
         {
-            _context.t1_user_login_history.Add(new t1_user_login_history
+            _context.t1_user_login_histories.Add(new t1_user_login_history
             {
                 login_time = DateTime.Now,
                 ipaddress = ip,

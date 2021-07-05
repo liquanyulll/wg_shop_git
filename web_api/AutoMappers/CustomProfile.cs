@@ -24,29 +24,36 @@ namespace web_api.AutoMappers
                 {
                     Pt_Id = item.Pt_Id,
                     Pt_Name = item.Pt_Name,
-                    Sort = item.Sort,
+                    Sort = item.Sort.GetValueOrDefault(0),
                     Enabled = item.Enabled,
-                    Deleted = item.Deleted
                 }).ToList();
             });
             CreateMap<ProductTypeModel, t2_product_type>();
 
             CreateMap<ProductListModel, t2_product>();
-            CreateMap<t2_product, ProductListModel>();
+            CreateMap<t2_product, ProductListModel>().AfterMap((source, dto) =>
+            {
+                dto.LogImg = WebConfig.GetProductImageUrl(source.LogImg);
+            }); ;
 
             CreateMap<ProductModel, t2_product>();
-            CreateMap<t2_product, ProductModel>();
+            CreateMap<t2_product, ProductModel>().AfterMap((source, dto) =>
+            {
+                dto.LogImg = WebConfig.GetProductImageUrl(source.LogImg);
+            });
 
             CreateMap<InvitationModel, t3_user_product_invitation>();
             CreateMap<t3_user_product_invitation, InvitationModel>();
 
             CreateMap<OrderModel, t4_order>();
-            CreateMap<t4_order, OrderModel>().BeforeMap((source, dto) =>
+            CreateMap<t4_order, OrderModel>().AfterMap((source, dto) =>
             {
                 dto.ProductName = source.Product.ProductName;
             });
 
-            CreateMap<t2_product_detail_Img, ProductDetailImgModel>();
+            CreateMap<t2_product_detail_Img, ProductDetailImgModel>().AfterMap((source,dto)=> {
+                dto.img_url = WebConfig.GetProductImageUrl(source.img_url);
+            });
             CreateMap<ProductDetailImgModel, t2_product_detail_Img>();
 
             CreateMap<t1_user_login_history, UserLoginHistoryModel>();

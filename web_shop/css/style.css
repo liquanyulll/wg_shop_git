@@ -69,14 +69,23 @@ header {padding: 50px 0; }
 header #logo{margin: 5px 0 15px;}
 header #cart {float: right;}
 header .form-search input{width: 70%;height: 56px;}
-header .form-search button {background: #222; color: #fff;padding: 12px 20px;font-size: 20px;}
+	header .form-search button {
+		background: #00986e;
+		color: #fff;
+		padding: 12px 20px;
+		margin-bottom: 3px;
+		font-size: 20px;
+	}
 header .form-search button:hover {color: #eee;}
 @media(max-width:968px) {
 	header #cart {margin-top: 20px;}
 	header #cart {float: none;}
 }
 
-#menu {background-color: #111;border-radius: 0;}
+#menu {
+	background-color: #555656;
+	border-radius: 0;
+}
 #menu #heading {float: left;padding-left: 15px;font-size: 20px;font-weight: 700;line-height: 40px;color: #fff;margin-top: 10px;text-transform: uppercase;}
 #menu .dropdown-menu {background-color: #111;}
 #menu .dropdown-menu li > a:hover {color: #ffffff;background-color: #3f3f3f;}

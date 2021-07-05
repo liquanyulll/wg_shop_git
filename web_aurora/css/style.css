@@ -185,10 +185,11 @@ header {
     }
 
     header .form-search button {
-        background: #222;
+        background: #0e8a67;
         color: #fff;
         padding: 12px 20px;
         font-size: 20px;
+        margin-bottom: 3px;
     }
 
         header .form-search button:hover {
@@ -206,10 +207,14 @@ header {
 }
 
 #menu {
-    background-color: #111;
+    background-color: #454246;
     border-radius: 0;
 }
 
+
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+    background-color: #454246 !important;
+}
     #menu #heading {
         float: left;
         padding-left: 15px;
@@ -230,45 +235,47 @@ header {
             background-color: #3f3f3f;
         }
 
-    #menu .dropdown-inner {
-        display: table;
+
+
+#menu .dropdown-inner {
+    display: table;
+}
+
+    #menu .dropdown-inner ul {
+        display: table-cell;
     }
 
-        #menu .dropdown-inner ul {
-            display: table-cell;
-        }
-
-        #menu .dropdown-inner a {
-            min-width: 160px;
-            display: block;
-            padding: 3px 20px;
-            clear: both;
-            line-height: 20px;
-            color: #333333;
-            font-size: 12px;
-        }
-
-    #menu li.dropdown:hover > a, #menu li.dropdown:focus > a, #menu li.dropdown:active > a {
-        background: #272727;
+    #menu .dropdown-inner a {
+        min-width: 160px;
+        display: block;
+        padding: 3px 20px;
+        clear: both;
+        line-height: 20px;
+        color: #333333;
+        font-size: 12px;
     }
 
-    #menu ul.nav li a {
-        color: #fff;
-        padding: 20px;
-        text-transform: uppercase;
+#menu li.dropdown:hover > a, #menu li.dropdown:focus > a, #menu li.dropdown:active > a {
+    background: #272727;
+}
+
+#menu ul.nav li a {
+    color: #fff;
+    padding: 20px;
+    text-transform: uppercase;
+}
+
+    #menu ul.nav li a:hover {
+        background-color: #3f3f3f;
     }
 
-        #menu ul.nav li a:hover {
-            background-color: #3f3f3f;
-        }
-
-    #menu .btn-navbar {
-        font-size: 20px;
-        color: #FFF;
-        padding: 5px 15px;
-        float: right;
-        border: 3px solid #fff;
-    }
+#menu .btn-navbar {
+    font-size: 20px;
+    color: #FFF;
+    padding: 5px 15px;
+    float: right;
+    border: 3px solid #fff;
+}
 
 @media (min-width: 768px) {
     #menu .dropdown:hover .dropdown-menu {

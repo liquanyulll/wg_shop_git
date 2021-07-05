@@ -21,7 +21,7 @@ namespace wg_service.Users
         }
         public IPagedList<t1_user_moneykey> SearchUsedHistory(int? userId = null, int pageIndex = 0, int pageSize = int.MaxValue)
         {
-            var query = _context.t1_user_moneykey.AsQueryable();
+            var query = _context.t1_user_moneykeys.AsQueryable();
             if (userId.HasValue)
                 query = query.Where(e => e.used_user_id == userId.Value);
 
@@ -32,24 +32,25 @@ namespace wg_service.Users
 
         public async Task<decimal> UserdMoneyKey(int userId, string mk)
         {
-            var user = await _context.t1_user.Include(e => e.t1_user_attr).FirstOrDefaultAsync(e => e.UserId == userId);
+            var user = await _context.t1_users.FirstOrDefaultAsync(e => e.UserId == userId);
             if (user == null)
             {
                 throw new NotImplementedException("用户不存在");
             }
 
-            var moneyKey = await _context.t1_user_moneykey.FirstOrDefaultAsync(e => e.mony_key == mk && e.used == "N");
+            mk = mk.Trim();
+            var moneyKey = await _context.t1_user_moneykeys.FirstOrDefaultAsync(e => e.mony_key == mk && e.used == "N");
             if (moneyKey == null)
             {
-                throw new NotImplementedException("卡密不存在");
+                throw new NotImplementedException("卡密不存在或已被使用");
             }
             moneyKey.used = "Y";
             moneyKey.used_time = DateTime.Now;
             moneyKey.used_ip = ServiceEngin.IP;
             moneyKey.used_user_id = user.UserId;
-            user.t1_user_attr.Amount += moneyKey.price;
+            user.Money += moneyKey.price;
             await _context.SaveChangesAsync();
-            return user.t1_user_attr.Amount;
+            return user.Money.Value;
         }
     }
 }
